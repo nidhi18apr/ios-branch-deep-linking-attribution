@@ -5,11 +5,11 @@
 //  Created by Ernest Cho on 11/14/19.
 //  Copyright © 2019 Branch, Inc. All rights reserved.
 //
-
 #import "BNCTelephony.h"
+#if !TARGET_OS_MACCATALYST
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
-
+#endif
 @implementation BNCTelephony
 
 - (instancetype)init {
@@ -22,6 +22,8 @@
 
 // This only works if device has cell service, otherwise all values are nil
 - (void)loadCarrierInformation {
+#if !TARGET_OS_MACCATALYST
+
     CTTelephonyNetworkInfo *networkInfo = [CTTelephonyNetworkInfo new];
     CTCarrier *carrier;
     if (@available( iOS 12.0, *))
@@ -45,6 +47,7 @@
     self.isoCountryCode = carrier.isoCountryCode;
     self.mobileCountryCode = carrier.mobileCountryCode;
     self.mobileNetworkCode = carrier.mobileNetworkCode;
+#endif
 }
 
 @end
