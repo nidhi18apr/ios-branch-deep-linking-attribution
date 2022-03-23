@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Branch"
-  s.version          = "1.41.0"
+  s.version          = "1.42.0"
   s.summary          = "Create an HTTP URL for any piece of content in your app"
   s.description      = <<-DESC
 - Want the highest possible conversions on your sharing feature?
@@ -18,18 +18,18 @@ Use the Branch SDK (branch.io) to create and power the links that point back to 
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
 
-  s.ios.source_files = "Branch-SDK/*.{h,m}"
+  s.ios.source_files = "Branch/*.{h,m}"
 
-  s.tvos.source_files = "Branch-SDK/*.{h,m}"
-  s.tvos.exclude_files = "Branch-SDK/BNCAdClient.{h,m}",
-	"Branch-SDK/BNCAppleSearchAds.{h,m}",
-	"Branch-SDK/BNCContentDiscoveryManager.{h,m}",
-	"Branch-SDK/BNCTelephony.{h,m}",
-	"Branch-SDK/BNCUserAgentCollector.{h,m}",
-	"Branch-SDK/BNCSpotlightService.{h,m}",
-	"Branch-SDK/BranchActivityItemProvider.{h,m}",
-	"Branch-SDK/BranchCSSearchableItemAttributeSet.{h,m}",
-	"Branch-SDK/BranchShareLink.{h,m}"
+  s.tvos.source_files = "Branch/*.{h,m}"
+  s.tvos.exclude_files = "Branch/BNCAdClient.{h,m}",
+	"Branch/BNCAppleSearchAds.{h,m}",
+	"Branch/BNCContentDiscoveryManager.{h,m}",
+	"Branch/BNCTelephony.{h,m}",
+	"Branch/BNCUserAgentCollector.{h,m}",
+	"Branch/BNCSpotlightService.{h,m}",
+	"Branch/BranchActivityItemProvider.{h,m}",
+	"Branch/BranchCSSearchableItemAttributeSet.{h,m}",
+	"Branch/BranchShareLink.{h,m}"
 
   s.frameworks = 'CoreServices', 'SystemConfiguration'
   s.ios.frameworks = 'WebKit', 'iAd', 'CoreTelephony'

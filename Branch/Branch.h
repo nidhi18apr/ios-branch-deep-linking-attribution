@@ -42,6 +42,12 @@
 #import "BranchCSSearchableItemAttributeSet.h"
 #endif
 
+//! Project version number for Branch.
+FOUNDATION_EXPORT double BranchVersionNumber;
+
+//! Project version string for Branch.
+FOUNDATION_EXPORT const unsigned char BranchVersionString[];
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**

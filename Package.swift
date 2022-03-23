@@ -17,7 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "Branch",
-            path: "Branch-SDK",
+            path: "Branch",
             publicHeadersPath: "."
         ),
     ]

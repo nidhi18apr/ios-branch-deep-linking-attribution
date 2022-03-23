@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5FD0FB0E25CE4B8A008200EE"
-               BuildableName = "Branch-static-xcframework"
-               BlueprintName = "Branch-static-xcframework"
-               ReferencedContainer = "container:BranchSDK.xcodeproj">
+               BlueprintIdentifier = "5FC451AB27EBBC6600251812"
+               BuildableName = "Branch-xcframework"
+               BlueprintName = "Branch-xcframework"
+               ReferencedContainer = "container:Branch-frameworks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,10 +50,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5FD0FB0E25CE4B8A008200EE"
-            BuildableName = "Branch-static-xcframework"
-            BlueprintName = "Branch-static-xcframework"
-            ReferencedContainer = "container:BranchSDK.xcodeproj">
+            BlueprintIdentifier = "5FC451AB27EBBC6600251812"
+            BuildableName = "Branch-xcframework"
+            BlueprintName = "Branch-xcframework"
+            ReferencedContainer = "container:Branch-frameworks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
