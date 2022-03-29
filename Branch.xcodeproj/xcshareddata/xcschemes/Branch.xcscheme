@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "466B58371B17773000A69EDE"
-               BuildableName = "libBranch.a"
+               BlueprintIdentifier = "5FD3E95B27E13A860056D2E0"
+               BuildableName = "Branch.framework"
                BlueprintName = "Branch"
-               ReferencedContainer = "container:Branch-TestBed.xcodeproj">
+               ReferencedContainer = "container:Branch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,35 +26,16 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      enableThreadSanitizer = "YES"
-      enableUBSanitizer = "YES"
-      codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
-            BlueprintName = "Branch"
-            ReferencedContainer = "container:Branch-TestBed.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E6B3B501AA42D0E005F45BF"
-               BuildableName = "Branch-SDK-Tests.xctest"
-               BlueprintName = "Branch-SDK-Tests"
-               ReferencedContainer = "container:Branch-TestBed.xcodeproj">
+               BlueprintIdentifier = "5FD3E96327E13A860056D2E0"
+               BuildableName = "BranchTests.xctest"
+               BlueprintName = "BranchTests"
+               ReferencedContainer = "container:Branch.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
-            BlueprintName = "Branch"
-            ReferencedContainer = "container:Branch-TestBed.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -88,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
+            BlueprintIdentifier = "5FD3E95B27E13A860056D2E0"
+            BuildableName = "Branch.framework"
             BlueprintName = "Branch"
-            ReferencedContainer = "container:Branch-TestBed.xcodeproj">
+            ReferencedContainer = "container:Branch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

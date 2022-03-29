@@ -242,7 +242,7 @@
 		5F26697327EBC51200B2FE8D /* BranchShortUrlSyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9CE27E13C590056D2E0 /* BranchShortUrlSyncRequest.h */; };
 		5F26697427EBC51200B2FE8D /* BranchSpotlightUrlRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9FF27E13C5B0056D2E0 /* BranchSpotlightUrlRequest.h */; };
 		5F26697527EBC51200B2FE8D /* BranchUserCompletedActionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9E627E13C5A0056D2E0 /* BranchUserCompletedActionRequest.h */; };
-		5F26697627EBC51200B2FE8D /* NSError+Branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9B027E13C580056D2E0 /* NSError+Branch.h */; };
+		5F26697627EBC51200B2FE8D /* NSError+Branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9B027E13C580056D2E0 /* NSError+Branch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F26697727EBC51200B2FE8D /* NSMutableDictionary+Branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E99627E13C580056D2E0 /* NSMutableDictionary+Branch.h */; };
 		5F26697827EBC51200B2FE8D /* NSString+Branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E9C827E13C590056D2E0 /* NSString+Branch.h */; };
 		5FD3E96B27E13A860056D2E0 /* Branch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD3E95F27E13A860056D2E0 /* Branch.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -921,6 +921,7 @@
 				5FD3EA7027E13C5B0056D2E0 /* BNCServerRequest.h in Headers */,
 				5FD3EA4427E13C5B0056D2E0 /* BNCServerRequestQueue.h in Headers */,
 				5FD3EA3A27E13C5B0056D2E0 /* BNCServerResponse.h in Headers */,
+				5F26697627EBC51200B2FE8D /* NSError+Branch.h in Headers */,
 				5FD3EA8327E13C5B0056D2E0 /* UIViewController+Branch.h in Headers */,
 				5F26694727EBC51000B2FE8D /* BNCAppGroupsData.h in Headers */,
 				5F26694827EBC51000B2FE8D /* BNCAppleAdClient.h in Headers */,
@@ -969,7 +970,6 @@
 				5F26697327EBC51200B2FE8D /* BranchShortUrlSyncRequest.h in Headers */,
 				5F26697427EBC51200B2FE8D /* BranchSpotlightUrlRequest.h in Headers */,
 				5F26697527EBC51200B2FE8D /* BranchUserCompletedActionRequest.h in Headers */,
-				5F26697627EBC51200B2FE8D /* NSError+Branch.h in Headers */,
 				5F26697727EBC51200B2FE8D /* NSMutableDictionary+Branch.h in Headers */,
 				5F26697827EBC51200B2FE8D /* NSString+Branch.h in Headers */,
 			);
