@@ -11,6 +11,7 @@
 #import "BranchConstants.h"
 #import "BNCPreferenceHelper.h"
 #import <OCMock/OCMock.h>
+#import "Branch.h"
 
 @interface BranchUserCompletedActionTests : BNCTestCase
 

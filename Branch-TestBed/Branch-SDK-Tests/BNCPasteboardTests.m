@@ -108,8 +108,9 @@
 }
 
 - (void)testDefaultState {
-    // host app sets this to true, should consider a no-op test host
-    XCTAssertTrue([BNCPasteboard sharedInstance].checkOnInstall);
+    // This test is unreliable as the host app changes the value during startup, disabled for now
+    BOOL tmp = [BNCPasteboard sharedInstance].checkOnInstall;
+    XCTAssertTrue(tmp);
 }
 
 - (void)testIsUrlOnPasteboard {

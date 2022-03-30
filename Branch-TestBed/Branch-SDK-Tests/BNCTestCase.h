@@ -10,8 +10,9 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "NSString+Branch.h"
+#import "Branch.h"
 #import "BNCThreads.h"
+#import "NSString+Branch.h"
 
 #define BNCTAssertEqualMaskedString(string, mask) { \
     if ((id)string != nil && (id)mask != nil && [string bnc_isEqualToMaskedString:mask]) { \

@@ -11,6 +11,7 @@
 #import "BranchConstants.h"
 #import "BNCPreferenceHelper.h"
 #import <OCMock/OCMock.h>
+#import "Branch.h"
 
 static NSString * const IDENTITY_TEST_USER_ID = @"foo_id";
 

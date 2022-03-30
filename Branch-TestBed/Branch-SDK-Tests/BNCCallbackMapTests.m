@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Branch.h"
 #import "BNCCallbackMap.h"
 #import "NSError+Branch.h"
 

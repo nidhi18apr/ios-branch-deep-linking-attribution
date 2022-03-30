@@ -40,7 +40,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Comment out (for match guarantee testing) / or un-comment to toggle debugging:
     // Note: Unit tests will fail if 'setDebug' is set.
     // [branch setDebug];
-     [branch enableLogging];
+    [branch enableLogging];
     
     // Comment out in production. Un-comment to test your Branch SDK Integration:
     //[branch validateSDKIntegration];

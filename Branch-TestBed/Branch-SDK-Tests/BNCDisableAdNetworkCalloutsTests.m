@@ -24,11 +24,11 @@
 @implementation BNCDisableAdNetworkCalloutsTests
 
 - (void)setUp {
-    [BNCPreferenceHelper preferenceHelper].disableAdNetworkCallouts = YES;
+    [BNCPreferenceHelper sharedInstance].disableAdNetworkCallouts = YES;
 }
 
 - (void)tearDown {
-    [BNCPreferenceHelper preferenceHelper].disableAdNetworkCallouts = NO;
+    [BNCPreferenceHelper sharedInstance].disableAdNetworkCallouts = NO;
 }
 
 // check on the V2 dictionary
@@ -46,7 +46,7 @@
 // check on V1 payload
 - (void)testV1Payload {
     BNCServerInterface *interface = [BNCServerInterface new];
-    interface.preferenceHelper = [BNCPreferenceHelper preferenceHelper];
+    interface.preferenceHelper = [BNCPreferenceHelper sharedInstance];
     
     NSMutableDictionary *tmp = [NSMutableDictionary new];
     [interface updateDeviceInfoToMutableDictionary:tmp];

@@ -57,6 +57,15 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "BNCDisableAdNetworkCalloutsTests/testV1Payload">
+               </Test>
+               <Test
+                  Identifier = "BNCDisableAdNetworkCalloutsTests/testV2Dictionary">
+               </Test>
+               <Test
+                  Identifier = "BNCPasteboardTests/testDefaultState">
+               </Test>
+               <Test
                   Identifier = "BNCServerInterfaceTests/testGetRequestAsyncRetriesWhenAppropriate">
                </Test>
                <Test

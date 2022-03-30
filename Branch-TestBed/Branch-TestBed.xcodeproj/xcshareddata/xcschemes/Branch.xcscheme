@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "466B58371B17773000A69EDE"
-               BuildableName = "libBranch.a"
+               BlueprintIdentifier = "5F522DED27F4C98A008CD894"
+               BuildableName = "Branch.framework"
                BlueprintName = "Branch"
                ReferencedContainer = "container:Branch-TestBed.xcodeproj">
             </BuildableReference>
@@ -33,8 +33,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
+            BlueprintIdentifier = "5F522DED27F4C98A008CD894"
+            BuildableName = "Branch.framework"
             BlueprintName = "Branch"
             ReferencedContainer = "container:Branch-TestBed.xcodeproj">
          </BuildableReference>
@@ -72,8 +72,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
+            BlueprintIdentifier = "5F522DED27F4C98A008CD894"
+            BuildableName = "Branch.framework"
             BlueprintName = "Branch"
             ReferencedContainer = "container:Branch-TestBed.xcodeproj">
          </BuildableReference>
@@ -88,8 +88,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466B58371B17773000A69EDE"
-            BuildableName = "libBranch.a"
+            BlueprintIdentifier = "5F522DED27F4C98A008CD894"
+            BuildableName = "Branch.framework"
             BlueprintName = "Branch"
             ReferencedContainer = "container:Branch-TestBed.xcodeproj">
          </BuildableReference>
