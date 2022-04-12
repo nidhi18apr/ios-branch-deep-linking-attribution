@@ -6,12 +6,11 @@
 //  Copyright (c) 2014 Branch Metrics. All rights reserved.
 //
 
+#import <BranchSDK/BranchSDK.h>
 #import "AppDelegate.h"
 #import "LogOutputViewController.h"
 #import "NavigationController.h"
 #import "ViewController.h"
-#import "Branch.h"
-#import "BNCEncodingUtils.h"
 
 AppDelegate* appDelegate = nil;
 void APPLogHookFunction(NSDate*_Nonnull timestamp, BNCLogLevel level, NSString*_Nullable message);
@@ -216,7 +215,7 @@ continueUserActivity:(NSUserActivity *)userActivity
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
-    NSString *tokenString = [BNCEncodingUtils hexStringFromData:deviceToken];
+    NSString *tokenString = [AppDelegate hexStringFromData:deviceToken];
     NSLog(@"Registered for remote notifications with APN device token: '%@'.", tokenString);
 }
 
@@ -278,6 +277,29 @@ void APPLogHookFunction(NSDate*_Nonnull timestamp, BNCLogLevel level, NSString*_
         self.PrevCommandLogFileName = self.logFileName;
         self.logFileName = pathForLog;
     }
+}
+
+// Utility method copied from BNCEncodingUtils.h
++ (NSString *) hexStringFromData:(NSData*)data {
+
+    NSUInteger bytesCount = data.length;
+    if (bytesCount <= 0) return @"";
+
+    const char *hexChars = "0123456789ABCDEF";
+    const char *dataBuffer = data.bytes;
+    char *chars = malloc(sizeof(char) * (bytesCount * 2 + 1));
+    if (!chars) return @"";
+    char *s = chars;
+    for (unsigned i = 0; i < bytesCount; ++i) {
+        *s++ = hexChars[((*dataBuffer & 0xF0) >> 4)];
+        *s++ = hexChars[(*dataBuffer & 0x0F)];
+        dataBuffer++;
+    }
+    *s = '\0';
+
+    NSString *hexString = [NSString stringWithUTF8String:chars];
+    if (chars) free(chars);
+    return hexString;
 }
 
 @end

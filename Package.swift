@@ -4,20 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "Branch",
+    name: "BranchSDK",
     platforms: [
         .iOS(.v9),
         .tvOS(.v9),
     ],
     products: [
         .library(
-            name: "Branch",
-            targets: ["Branch"]),
+            name: "BranchSDK",
+            targets: ["BranchSDK"]),
     ],
     targets: [
         .target(
-            name: "Branch",
-            path: "Branch",
+            name: "BranchSDK",
+            path: "BranchSDK",
             publicHeadersPath: "."
         ),
     ]

@@ -6,12 +6,10 @@
 //  Copyright (c) 2014 Branch Metrics. All rights reserved.
 //
 
-#import "Branch.h"
+#import <BranchSDK/BranchSDK.h>
 #import "ViewController.h"
 #import "LogOutputViewController.h"
 #import "ArrayPickerView.h"
-#import "BranchUniversalObject.h"
-#import "BranchLinkProperties.h"
 #import "LogOutputViewController.h"
 #import "AppDelegate.h"
 #import <LinkPresentation/LinkPresentation.h>

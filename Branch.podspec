@@ -18,18 +18,18 @@ Use the Branch SDK (branch.io) to create and power the links that point back to 
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
 
-  s.ios.source_files = "Branch/*.{h,m}"
+  s.ios.source_files = "BranchSDK/*.{h,m}"
 
-  s.tvos.source_files = "Branch/*.{h,m}"
-  s.tvos.exclude_files = "Branch/BNCAdClient.{h,m}",
-	"Branch/BNCAppleSearchAds.{h,m}",
-	"Branch/BNCContentDiscoveryManager.{h,m}",
-	"Branch/BNCTelephony.{h,m}",
-	"Branch/BNCUserAgentCollector.{h,m}",
-	"Branch/BNCSpotlightService.{h,m}",
-	"Branch/BranchActivityItemProvider.{h,m}",
-	"Branch/BranchCSSearchableItemAttributeSet.{h,m}",
-	"Branch/BranchShareLink.{h,m}"
+  s.tvos.source_files = "BranchSDK/*.{h,m}"
+  s.tvos.exclude_files = "BranchSDK/BNCAdClient.{h,m}",
+	"BranchSDK/BNCAppleSearchAds.{h,m}",
+	"BranchSDK/BNCContentDiscoveryManager.{h,m}",
+	"BranchSDK/BNCTelephony.{h,m}",
+	"BranchSDK/BNCUserAgentCollector.{h,m}",
+	"BranchSDK/BNCSpotlightService.{h,m}",
+	"BranchSDK/BranchActivityItemProvider.{h,m}",
+	"BranchSDK/BranchCSSearchableItemAttributeSet.{h,m}",
+	"BranchSDK/BranchShareLink.{h,m}"
 
   s.frameworks = 'CoreServices', 'SystemConfiguration'
   s.ios.frameworks = 'WebKit', 'iAd', 'CoreTelephony'
