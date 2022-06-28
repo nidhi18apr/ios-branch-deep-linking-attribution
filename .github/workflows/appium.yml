@@ -1,16 +1,17 @@
 name: iOS Appium Tests 
 
 on: 
-  push:
-  branches:
-    - master
-  uses: actions/github-script@v6
-  with:
-    github-token: ${{ secrets.BRANCHLET_ACCESS_TOKEN }}
-    script: |
-      await github.rest.actions.createWorkflowDispatch({
-        owner: 'branchmetrics',
-        repo: 'qentelli-saas-sdk-testing-automation',
-        workflow_id: 'maven.yml',
-        ref: 'master'
-      })
+  push: workflow_dispatch
+
+jobs:
+  appium:
+    uses: actions/github-script@v6
+    with:
+      github-token: ${{ secrets.BRANCHLET_ACCESS_TOKEN }}
+      script: |
+        await github.rest.actions.createWorkflowDispatch({
+          owner: 'branchmetrics',
+          repo: 'qentelli-saas-sdk-testing-automation',
+          workflow_id: 'maven.yml',
+          ref: 'master'
+        })
