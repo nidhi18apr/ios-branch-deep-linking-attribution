@@ -1,6 +1,6 @@
 name: iOS Appium Tests 
 
-on: [push, workflow_dispatch]
+on: push
   branches:
     - master
   uses: actions/github-script@v6
