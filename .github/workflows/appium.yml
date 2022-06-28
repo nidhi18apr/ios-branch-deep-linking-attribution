@@ -1,6 +1,7 @@
 name: iOS Appium Tests 
 
-on: push
+on: 
+  push:
   branches:
     - master
   uses: actions/github-script@v6
