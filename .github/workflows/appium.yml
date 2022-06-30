@@ -11,7 +11,7 @@ jobs:
         github-token: ${{ secrets.BRANCHLET_ACCESS_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            owner: 'branchmetrics',
+            owner: 'BRANCHMETRICS',
             repo: 'qentelli-saas-sdk-testing-automation',
             workflow_id: 'maven.yml',
             ref: 'master'
