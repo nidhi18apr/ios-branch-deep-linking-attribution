@@ -473,7 +473,7 @@
         }
     }
     
-    if ([self.requestEndpoint containsString:@"/v1/open"]) {
+    if ([self.requestEndpoint containsString:@"/v1/open"] || [self.requestEndpoint containsString:@"/v1/install"]) {
         [fullParamDict bnc_safeSetObject:[BNCPreferenceHelper sharedInstance].userIdentity forKey:@"identity"];
     }
     
