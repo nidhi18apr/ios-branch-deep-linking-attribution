@@ -158,6 +158,10 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
 + (nullable BranchLink *) linkWithUniversalObject:(nullable BranchUniversalObject *)universalObject properties:(nullable BranchLinkProperties *)linkProperties;
 @end
 
+
+// Native imports from Swift header (forward declaration)
+@class BNCNativeCompute;
+
 #pragma mark - Branch
 
 @interface Branch : NSObject
@@ -256,6 +260,10 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
 
 /// TODO: Add documentation.
 @property (weak, nullable) NSObject<BranchDelegate>* delegate;
+
+@property (nonatomic, strong) BNCNativeCompute *bncNative;
+
+@property (nonatomic, copy, nullable) void (^nativeComputeDebugCallback)(UIViewController * _Nullable viewController, NSError * _Nullable error);
 
 #pragma mark - BranchActivityItemProvider methods
 #if !TARGET_OS_TV

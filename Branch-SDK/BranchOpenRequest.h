@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy) callbackWithStatus callback;
 
+
 + (void) waitForOpenResponseLock;
 + (void) releaseOpenResponseLock;
 + (void) setWaitNeededForOpenResponseLock;
@@ -20,5 +21,7 @@
 - (id)initWithCallback:(callbackWithStatus)callback;
 - (id)initWithCallback:(callbackWithStatus)callback isInstall:(BOOL)isInstall;
 + (NSNumber*) appUpdateState;
+- (NSString *)getActionName;
+- (NSMutableDictionary *)callNativeCapWorkflow:(NSMutableDictionary *)event;
 
 @end

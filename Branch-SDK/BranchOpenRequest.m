@@ -21,9 +21,13 @@
 #import "BNCSKAdNetwork.h"
 #import "BNCAppGroupsData.h"
 #import "BNCPartnerParameters.h"
+#import "Branch-Swift.h"
+
 
 @interface BranchOpenRequest ()
 @property (assign, nonatomic) BOOL isInstall;
+@property (strong, nonatomic) NSMutableDictionary *params;
+@property (strong, nonatomic) BNCPreferenceHelper *preferenceHelper;
 @end
 
 
@@ -38,78 +42,16 @@
         _callback = callback;
         _isInstall = isInstall;
     }
-
     return self;
 }
 
 - (void)makeRequest:(BNCServerInterface *)serverInterface key:(NSString *)key callback:(BNCServerCallback)callback {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-
-    BNCPreferenceHelper *preferenceHelper = [BNCPreferenceHelper sharedInstance];
-    if (preferenceHelper.randomizedDeviceToken) {
-        params[BRANCH_REQUEST_KEY_RANDOMIZED_DEVICE_TOKEN] = preferenceHelper.randomizedDeviceToken;
-    }
-
-    params[BRANCH_REQUEST_KEY_RANDOMIZED_BUNDLE_TOKEN] = preferenceHelper.randomizedBundleToken;
-    params[BRANCH_REQUEST_KEY_DEBUG] = @(preferenceHelper.isDebug);
-
-    [self safeSetValue:[BNCSystemObserver getBundleID] forKey:BRANCH_REQUEST_KEY_BUNDLE_ID onDict:params];
-    [self safeSetValue:[BNCSystemObserver getTeamIdentifier] forKey:BRANCH_REQUEST_KEY_TEAM_ID onDict:params];
-    [self safeSetValue:[BNCSystemObserver getAppVersion] forKey:BRANCH_REQUEST_KEY_APP_VERSION onDict:params];
-    [self safeSetValue:[BNCSystemObserver getDefaultUriScheme] forKey:BRANCH_REQUEST_KEY_URI_SCHEME onDict:params];
-    [self safeSetValue:[NSNumber numberWithBool:preferenceHelper.checkedFacebookAppLinks]
-        forKey:BRANCH_REQUEST_KEY_CHECKED_FACEBOOK_APPLINKS onDict:params];
-    [self safeSetValue:[NSNumber numberWithBool:preferenceHelper.checkedAppleSearchAdAttribution]
-        forKey:BRANCH_REQUEST_KEY_CHECKED_APPLE_AD_ATTRIBUTION onDict:params];
-    [self safeSetValue:preferenceHelper.linkClickIdentifier forKey:BRANCH_REQUEST_KEY_LINK_IDENTIFIER onDict:params];
-    [self safeSetValue:preferenceHelper.spotlightIdentifier forKey:BRANCH_REQUEST_KEY_SPOTLIGHT_IDENTIFIER onDict:params];
-    [self safeSetValue:preferenceHelper.universalLinkUrl forKey:BRANCH_REQUEST_KEY_UNIVERSAL_LINK_URL onDict:params];
-    [self safeSetValue:preferenceHelper.initialReferrer forKey:BRANCH_REQUEST_KEY_INITIAL_REFERRER onDict:params];
-    [self safeSetValue:preferenceHelper.externalIntentURI forKey:BRANCH_REQUEST_KEY_EXTERNAL_INTENT_URI onDict:params];
-    if (preferenceHelper.limitFacebookTracking)
-        params[@"limit_facebook_tracking"] = (__bridge NSNumber*) kCFBooleanTrue;
-
-    [self safeSetValue:[NSNumber numberWithBool:[[BNCAppleReceipt sharedInstance] isTestFlight]] forKey:BRANCH_REQUEST_KEY_APPLE_TESTFLIGHT onDict:params];
-    
-    NSMutableDictionary *cdDict = [[NSMutableDictionary alloc] init];
-    BranchContentDiscoveryManifest *contentDiscoveryManifest = [BranchContentDiscoveryManifest getInstance];
-    [cdDict bnc_safeSetObject:[contentDiscoveryManifest getManifestVersion] forKey:BRANCH_MANIFEST_VERSION_KEY];
-    [cdDict bnc_safeSetObject:[BNCSystemObserver getBundleID] forKey:BRANCH_BUNDLE_IDENTIFIER];
-    [self safeSetValue:cdDict forKey:BRANCH_CONTENT_DISCOVER_KEY onDict:params];
-
-    if (preferenceHelper.appleSearchAdNeedsSend) {
-        NSString *encodedSearchData = nil;
-        @try {
-            NSData *jsonData = [BNCEncodingUtils encodeDictionaryToJsonData:preferenceHelper.appleSearchAdDetails];
-            encodedSearchData = [BNCEncodingUtils base64EncodeData:jsonData];
-        } @catch (id) { }
-        [self safeSetValue:encodedSearchData
-                    forKey:BRANCH_REQUEST_KEY_SEARCH_AD
-                    onDict:params];
+    if (_params == nil || _preferenceHelper == nil) {
+        [self setParams];
     }
     
-    if (!preferenceHelper.appleAttributionTokenChecked) {
-        NSString *appleAttributionToken = [BNCSystemObserver appleAttributionToken];
-        if (appleAttributionToken) {
-            preferenceHelper.appleAttributionTokenChecked = YES;
-            [self safeSetValue:appleAttributionToken forKey:BRANCH_REQUEST_KEY_APPLE_ATTRIBUTION_TOKEN onDict:params];
-        }
-    }
-    
-    NSDictionary *partnerParameters = [[BNCPartnerParameters shared] parameterJson];
-    if (partnerParameters.count > 0) {
-        [self safeSetValue:partnerParameters forKey:BRANCH_REQUEST_KEY_PARTNER_PARAMETERS onDict:params];
-    }
-
-    BNCApplication *application = [BNCApplication currentApplication];
-    params[@"lastest_update_time"] = BNCWireFormatFromDate(application.currentBuildDate);
-    params[@"previous_update_time"] = BNCWireFormatFromDate(preferenceHelper.previousAppBuildDate);
-    params[@"latest_install_time"] = BNCWireFormatFromDate(application.currentInstallDate);
-    params[@"first_install_time"] = BNCWireFormatFromDate(application.firstInstallDate);
-    params[@"update"] = [self.class appUpdateState];
-
-    [serverInterface postRequest:params
-        url:[preferenceHelper
+    [serverInterface postRequest:_params
+        url:[_preferenceHelper
         getAPIURL:BRANCH_REQUEST_ENDPOINT_OPEN]
         key:key
         callback:callback];
@@ -161,8 +103,7 @@ typedef NS_ENUM(NSInteger, BNCUpdateState) {
     if ([userIdentity isKindOfClass:[NSNumber class]]) {
         userIdentity = [userIdentity stringValue];
     }
-    
-    
+
     if ([data objectForKey:BRANCH_RESPONSE_KEY_RANDOMIZED_DEVICE_TOKEN]) {
         preferenceHelper.randomizedDeviceToken = data[BRANCH_RESPONSE_KEY_RANDOMIZED_DEVICE_TOKEN];
         if (!preferenceHelper.randomizedDeviceToken) {
@@ -170,7 +111,7 @@ typedef NS_ENUM(NSInteger, BNCUpdateState) {
             preferenceHelper.randomizedDeviceToken = data[@"device_fingerprint_id"];
         }
     }
-   
+    
     if (data[BRANCH_RESPONSE_KEY_USER_URL]) {
         preferenceHelper.userUrl = data[BRANCH_RESPONSE_KEY_USER_URL];
     }
@@ -284,20 +225,27 @@ typedef NS_ENUM(NSInteger, BNCUpdateState) {
     if (self.callback) {
         self.callback(YES, nil);
     }
+    
+    if (!error && !self.isInstall) {
+        Branch *branch = [Branch getInstance];
+        if (branch.bncNative != nil && branch.bncNative.native != nil) {
+            [branch.bncNative markEventAsCompletedWithEvent:_params[BRANCH_NATIVE_COMPUTE]];
+        }
+    }
 }
+
 
 - (NSString *)getActionName {
     return @"open";
 }
 
-
 #pragma - Open Response Lock Handling
 
 
-//	Instead of semaphores, the lock is handled by scheduled dispatch_queues.
-//	This is the 'new' way to lock and is handled better optimized for iOS.
-//	Also, since implied lock is handled by a scheduler and not a hard semaphore it's less error
-//	prone.
+//    Instead of semaphores, the lock is handled by scheduled dispatch_queues.
+//    This is the 'new' way to lock and is handled better optimized for iOS.
+//    Also, since implied lock is handled by a scheduler and not a hard semaphore it's less error
+//    prone.
 
 
 static dispatch_queue_t openRequestWaitQueue = NULL;
@@ -338,4 +286,112 @@ static BOOL openRequestWaitQueueIsSuspended = NO;
     }
 }
 
+
+// Call native capping worfklow and add resulting
+// flag to dictionary
+- (void)checkNativeCapping {
+    // set up request params
+    if (_params == nil || _preferenceHelper == nil) {
+        [self setParams];
+    }
+    // add `name` field for native workflow
+    [self safeSetValue:@"OPEN" forKey:@"name" onDict:self.params];
+    
+    // call Native capping workflow
+    NSMutableDictionary *nativeCappingWorkflowResult = [self callNativeCapWorkflow:self.params];
+
+    // update request object with native capping results
+    if (nativeCappingWorkflowResult != nil && nativeCappingWorkflowResult.count != 0) {
+        BOOL verificationMode = [[nativeCappingWorkflowResult valueForKeyPath:BRANCH_NATIVE_VERIFICATION_MODE] intValue];
+        BOOL cappingDecision = [[nativeCappingWorkflowResult valueForKeyPath:BRANCH_NATIVE_CAPPING_DECISION] intValue];
+        
+        //update capping decision of event
+        self.nativeCapped = !verificationMode && cappingDecision;
+        
+        //update request object with capping fields added
+        self.params = nativeCappingWorkflowResult;
+    }
+}
+
+#pragma mark - Private methods
+
+- (NSMutableDictionary *)callNativeCapWorkflow:(NSMutableDictionary *)event {
+    Branch *branch = [Branch getInstance];
+    if (branch.bncNative != nil && branch.bncNative.native != nil) {
+        return [branch.bncNative checkNativeCappingWithEvent:self.params];
+    } else {
+        NSLog(@"Error: Native instance not initialized");
+        return nil;
+    }
+}
+
+- (void) setParams {
+    _params = [[NSMutableDictionary alloc] init];
+    _preferenceHelper = [BNCPreferenceHelper sharedInstance];
+    if (_preferenceHelper.randomizedDeviceToken) {
+        _params[BRANCH_REQUEST_KEY_RANDOMIZED_DEVICE_TOKEN] = _preferenceHelper.randomizedDeviceToken;
+    }
+
+    _params[BRANCH_REQUEST_KEY_RANDOMIZED_BUNDLE_TOKEN] = _preferenceHelper.randomizedBundleToken;
+    _params[BRANCH_REQUEST_KEY_DEBUG] = @(_preferenceHelper.isDebug);
+
+    [self safeSetValue:[BNCSystemObserver getBundleID] forKey:BRANCH_REQUEST_KEY_BUNDLE_ID onDict:_params];
+    [self safeSetValue:[BNCSystemObserver getTeamIdentifier] forKey:BRANCH_REQUEST_KEY_TEAM_ID onDict:_params];
+    [self safeSetValue:[BNCSystemObserver getAppVersion] forKey:BRANCH_REQUEST_KEY_APP_VERSION onDict:_params];
+    [self safeSetValue:[BNCSystemObserver getDefaultUriScheme] forKey:BRANCH_REQUEST_KEY_URI_SCHEME onDict:_params];
+    [self safeSetValue:[NSNumber numberWithBool:_preferenceHelper.checkedFacebookAppLinks]
+        forKey:BRANCH_REQUEST_KEY_CHECKED_FACEBOOK_APPLINKS onDict:_params];
+    [self safeSetValue:[NSNumber numberWithBool:_preferenceHelper.checkedAppleSearchAdAttribution]
+        forKey:BRANCH_REQUEST_KEY_CHECKED_APPLE_AD_ATTRIBUTION onDict:_params];
+    [self safeSetValue:_preferenceHelper.linkClickIdentifier forKey:BRANCH_REQUEST_KEY_LINK_IDENTIFIER onDict:_params];
+    [self safeSetValue:_preferenceHelper.spotlightIdentifier forKey:BRANCH_REQUEST_KEY_SPOTLIGHT_IDENTIFIER onDict:_params];
+    [self safeSetValue:_preferenceHelper.universalLinkUrl forKey:BRANCH_REQUEST_KEY_UNIVERSAL_LINK_URL onDict:_params];
+    [self safeSetValue:_preferenceHelper.initialReferrer forKey:BRANCH_REQUEST_KEY_INITIAL_REFERRER onDict:_params];
+    [self safeSetValue:_preferenceHelper.externalIntentURI forKey:BRANCH_REQUEST_KEY_EXTERNAL_INTENT_URI onDict:_params];
+    if (_preferenceHelper.limitFacebookTracking)
+        _params[@"limit_facebook_tracking"] = (__bridge NSNumber*) kCFBooleanTrue;
+
+    [self safeSetValue:[NSNumber numberWithBool:[[BNCAppleReceipt sharedInstance] isTestFlight]] forKey:BRANCH_REQUEST_KEY_APPLE_TESTFLIGHT onDict:_params];
+    
+    NSMutableDictionary *cdDict = [[NSMutableDictionary alloc] init];
+    BranchContentDiscoveryManifest *contentDiscoveryManifest = [BranchContentDiscoveryManifest getInstance];
+    [cdDict bnc_safeSetObject:[contentDiscoveryManifest getManifestVersion] forKey:BRANCH_MANIFEST_VERSION_KEY];
+    [cdDict bnc_safeSetObject:[BNCSystemObserver getBundleID] forKey:BRANCH_BUNDLE_IDENTIFIER];
+    [self safeSetValue:cdDict forKey:BRANCH_CONTENT_DISCOVER_KEY onDict:_params];
+
+    if (_preferenceHelper.appleSearchAdNeedsSend) {
+        NSString *encodedSearchData = nil;
+        @try {
+            NSData *jsonData = [BNCEncodingUtils encodeDictionaryToJsonData:_preferenceHelper.appleSearchAdDetails];
+            encodedSearchData = [BNCEncodingUtils base64EncodeData:jsonData];
+        } @catch (id) { }
+        [self safeSetValue:encodedSearchData
+                    forKey:BRANCH_REQUEST_KEY_SEARCH_AD
+                    onDict:_params];
+    }
+    
+    if (!_preferenceHelper.appleAttributionTokenChecked) {
+        NSString *appleAttributionToken = [BNCSystemObserver appleAttributionToken];
+        if (appleAttributionToken) {
+            _preferenceHelper.appleAttributionTokenChecked = YES;
+            [self safeSetValue:appleAttributionToken forKey:BRANCH_REQUEST_KEY_APPLE_ATTRIBUTION_TOKEN onDict:_params];
+        }
+    }
+    
+    NSDictionary *partnerParameters = [[BNCPartnerParameters shared] parameterJson];
+    if (partnerParameters.count > 0) {
+        [self safeSetValue:partnerParameters forKey:BRANCH_REQUEST_KEY_PARTNER_PARAMETERS onDict:_params];
+    }
+
+    BNCApplication *application = [BNCApplication currentApplication];
+    _params[@"lastest_update_time"] = BNCWireFormatFromDate(application.currentBuildDate);
+    _params[@"previous_update_time"] = BNCWireFormatFromDate(_preferenceHelper.previousAppBuildDate);
+    _params[@"latest_install_time"] = BNCWireFormatFromDate(application.currentInstallDate);
+    _params[@"first_install_time"] = BNCWireFormatFromDate(application.firstInstallDate);
+    _params[@"update"] = [self.class appUpdateState];
+    
+}
+
+
 @end
+

@@ -18,7 +18,7 @@ Use the Branch SDK (branch.io) to create and power the links that point back to 
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
 
-  s.ios.source_files = "Branch-SDK/*.{h,m}"
+  s.ios.source_files = "Branch-SDK/*.{h,m,swift}"
 
   s.tvos.source_files = "Branch-SDK/*.{h,m}"
   s.tvos.exclude_files = "Branch-SDK/BNCAdClient.{h,m}",
@@ -31,7 +31,13 @@ Use the Branch SDK (branch.io) to create and power the links that point back to 
 	"Branch-SDK/BranchCSSearchableItemAttributeSet.{h,m}",
 	"Branch-SDK/BranchShareLink.{h,m}"
 
+  s.public_header_files = 'Branch/Classes/**/*.h'
   s.frameworks = 'CoreServices', 'SystemConfiguration'
   s.weak_framework = 'LinkPresentation'
   s.ios.frameworks = 'WebKit', 'iAd', 'CoreTelephony'
+  s.static_framework = true
+  
+  s.ios.vendored_frameworks = 'Branch-TestBed/NativeComputeSDK.xcframework'
+  s.xcconfig = { 'SWIFT_OBJC_INTERFACE_HEADER_NAME' => '$(SWIFT_MODULE_NAME)-Swift.h' }
+  
 end

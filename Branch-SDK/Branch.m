@@ -43,6 +43,7 @@
 #import "BNCPartnerParameters.h"
 #import "BranchEvent.h"
 #import "BNCPasteboard.h"
+#import "Branch-Swift.h"
 
 #if !TARGET_OS_TV
 #import "BNCUserAgentCollector.h"
@@ -120,6 +121,7 @@ typedef NS_ENUM(NSInteger, BNCInitStatus) {
     BNCInitStatusInitialized
 };
 
+
 @interface Branch() <BranchDeepLinkingControllerCompletionDelegate> {
     NSInteger _networkCount;
     BNCURLFilter *_userURLFilter;
@@ -147,7 +149,6 @@ typedef NS_ENUM(NSInteger, BNCInitStatus) {
 #endif
 
 @property (nonatomic, copy, nullable) void (^sceneSessionInitWithCallback)(BNCInitSessionResponse * _Nullable initResponse, NSError * _Nullable error);
-
 @end
 
 @implementation Branch
@@ -240,7 +241,7 @@ typedef NS_ENUM(NSInteger, BNCInitStatus) {
             BNCLogWarning(@"FBSDKAppLinkUtility not found but enableFacebookLinkCheck set to true. Please be sure you have integrated the Facebook SDK.");
         }
     }
-
+    self.bncNative = [[BNCNativeCompute alloc] initWithBranchKey:key];
     return self;
 }
 
@@ -619,6 +620,7 @@ static NSString *bnc_branchKey = nil;
     [self.class addBranchSDKVersionToCrashlyticsReport];
     self.shouldAutomaticallyDeepLink = automaticallyDisplayController;
 
+    
     // If the SDK is already initialized, this means that initSession was called after other lifecycle calls.
     if (self.initializationStatus == BNCInitStatusInitialized) {
         [self initUserSessionAndCallCallback:YES sceneIdentifier:nil];
@@ -1235,8 +1237,8 @@ static NSString *bnc_branchKey = nil;
 
     if (self.deepLinkDebugParams) {
         NSMutableDictionary* debugInstallParams =
-			[[BNCEncodingUtils decodeJsonStringToDictionary:self.preferenceHelper.sessionParams]
-				mutableCopy];
+            [[BNCEncodingUtils decodeJsonStringToDictionary:self.preferenceHelper.sessionParams]
+                mutableCopy];
         [debugInstallParams addEntriesFromDictionary:self.deepLinkDebugParams];
         return debugInstallParams;
     }
@@ -1627,6 +1629,8 @@ static NSString *bnc_branchKey = nil;
                     key:key];
         });
         return branch;
+        
+        
     }
 }
 
@@ -2005,6 +2009,26 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
             });
         }
     }
+    
+
+    // determine Native debug metrics
+    NSString *debugHashRequest = [self.getLatestReferringParams objectForKey:@"native-debug-sdk"];
+    NSString *debugHashWF = [self.bncNative getDebugHash];
+    if ([debugHashRequest isEqualToString:debugHashWF]) {
+        [self presentNativeComputeDebug];
+    }
+}
+
+- (void)presentNativeComputeDebug {
+    if (self.nativeComputeDebugCallback != nil) {
+        [self.bncNative getDeviceSchemaStateWithCompletion:^(NSDictionary *schemaMap){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NativeComputeDebugViewController *nativeViewController = [[NativeComputeDebugViewController alloc] init];
+                nativeViewController.schemaMap = schemaMap;
+                self.nativeComputeDebugCallback(nativeViewController, nil);
+            });
+        }];
+    }
 }
 
 - (BOOL)isReplayableRequest:(BNCServerRequest *)request {
@@ -2060,13 +2084,35 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
                     return;
                 }
             }
+            
+            // check capping from native
+            if ([req isKindOfClass:[BranchOpenRequest class]]) {
+                BranchOpenRequest *tmp = (BranchOpenRequest *)req;
+                if ([[tmp getActionName] isEqualToString:@"open"]) {
+                    [req checkNativeCapping];
+                }
 
+            }
+                     
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(queue, ^ {
-                [req makeRequest:self.serverInterface key:self.class.branchKey callback:
-                    ^(BNCServerResponse* response, NSError* error) {
-                        [self processRequest:req response:response error:error];
-                }];
+                if (!req.nativeCapped) {
+                    NSLog(@"Capping bypassed or not enabled for event");
+                    [req makeRequest:self.serverInterface key:self.class.branchKey callback:
+                        ^(BNCServerResponse* response, NSError* error) {
+                            [self processRequest:req response:response error:error];
+                    }];
+                }
+                else {
+                    NSLog(@"Event capped");
+                    BNCServerResponse *response = [[BNCServerResponse alloc] init];
+                    response.statusCode = @200;
+                    response.data = @{
+                        @"data": @"{\"+clicked_branch_link\":false,\"+is_first_session\":false}"
+                    };
+                    response.requestId = nil;
+                    [self processRequest:req response:response error:nil];
+                }
             });
         }
     }
@@ -2095,6 +2141,20 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
 }
 
 - (void)initUserSessionAndCallCallback:(BOOL)callCallback sceneIdentifier:(NSString *)sceneIdentifier {
+    dispatch_async(self.isolationQueue, ^(){
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_group_enter(group);
+        dispatch_sync(dispatch_get_main_queue(), ^ {
+            if (self.bncNative != nil && self.bncNative.native != nil ) {
+                [self.bncNative syncSchemaWithGroup:group];
+            } else {
+                BNCLogError(@"Error: Native instance not initialized");
+                dispatch_group_leave(group);
+            }
+        });
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    });
+
     dispatch_async(self.isolationQueue, ^(){
         NSString *urlstring = nil;
         if (self.preferenceHelper.universalLinkUrl.length) {
@@ -2138,22 +2198,23 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
     });
 }
 
+
 // only called from initUserSessionAndCallCallback!
 - (void)initializeSessionAndCallCallback:(BOOL)callCallback sceneIdentifier:(NSString *)sceneIdentifier {
-	Class clazz = [BranchInstallRequest class];
-	if (self.preferenceHelper.randomizedBundleToken) {
-		clazz = [BranchOpenRequest class];
-	}
+    Class clazz = [BranchInstallRequest class];
+    if (self.preferenceHelper.randomizedBundleToken) {
+        clazz = [BranchOpenRequest class];
+    }
 
     callbackWithStatus initSessionCallback = ^(BOOL success, NSError *error) {
         // callback on main, this is generally what the client expects and maintains our previous behavior
-		dispatch_async(dispatch_get_main_queue(), ^ {
-			if (error) {
-				[self handleInitFailure:error callCallback:callCallback sceneIdentifier:(NSString *)sceneIdentifier];
-			} else {
-				[self handleInitSuccessAndCallCallback:callCallback sceneIdentifier:(NSString *)sceneIdentifier];
-			}
-		});
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            if (error) {
+                [self handleInitFailure:error callCallback:callCallback sceneIdentifier:(NSString *)sceneIdentifier];
+            } else {
+                [self handleInitSuccessAndCallCallback:callCallback sceneIdentifier:(NSString *)sceneIdentifier];
+            }
+        });
     };
 
     // Notify everyone --
@@ -2175,20 +2236,20 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
 
     // Fix the queue order and open --
 
-	@synchronized (self) {
+    @synchronized (self) {
         [self removeInstallOrOpen];
-		[BranchOpenRequest setWaitNeededForOpenResponseLock];
-		BranchOpenRequest *req = [[clazz alloc] initWithCallback:initSessionCallback];
-		[self insertRequestAtFront:req];
+        [BranchOpenRequest setWaitNeededForOpenResponseLock];
+        BranchOpenRequest *req = [[clazz alloc] initWithCallback:initSessionCallback];
+        [self insertRequestAtFront:req];
         self.initializationStatus = BNCInitStatusInitializing;
-		[self processNextQueueItem];
-	}
+        [self processNextQueueItem];
+    }
 }
 
 - (BOOL)removeInstallOrOpen {
-	@synchronized (self) {
-		if ([self.requestQueue removeInstallOrOpen]) {
-			self.networkCount = 0;
+    @synchronized (self) {
+        if ([self.requestQueue removeInstallOrOpen]) {
+            self.networkCount = 0;
             return YES;
         }
         return NO;
@@ -2509,3 +2570,4 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
 }
 
 @end
+

@@ -37,4 +37,8 @@
     return YES;
 }
 
+- (void)checkNativeCapping {
+    self.nativeCapped = NO;
+}
+
 @end

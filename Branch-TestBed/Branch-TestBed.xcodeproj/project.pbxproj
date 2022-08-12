@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -185,6 +185,7 @@
 		5F67F48E228F535500067429 /* BNCEncodingUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F67F48D228F535500067429 /* BNCEncodingUtilsTests.m */; };
 		5F73FC7E23313F7A000EBD32 /* BNCJSONUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F73FC7C23313F7A000EBD32 /* BNCJSONUtility.h */; };
 		5F73FC7F23313F7A000EBD32 /* BNCJSONUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F73FC7D23313F7A000EBD32 /* BNCJSONUtility.m */; };
+		5F7A9D8D284A9D9D002BA2F7 /* LoadSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A9D8C284A9D9D002BA2F7 /* LoadSwift.swift */; };
 		5F83B9ED2433BAAA0054A022 /* BNCServerInterface.Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D16837E2098C901008819E3 /* BNCServerInterface.Test.m */; };
 		5F892EB82360EFE90023AEC1 /* BNCAppleSearchAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F892EB62360EFE90023AEC1 /* BNCAppleSearchAds.m */; };
 		5F892EB92360EFE90023AEC1 /* BNCAppleSearchAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F892EB72360EFE90023AEC1 /* BNCAppleSearchAds.h */; };
@@ -278,11 +279,26 @@
 		C1614D5C285BD4AF0098946B /* BranchPluginSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = C1614D5A285BD4AF0098946B /* BranchPluginSupport.h */; };
 		C1614D5D285BD4AF0098946B /* BranchPluginSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C1614D5B285BD4AF0098946B /* BranchPluginSupport.m */; };
 		E2B9474A1D15D75000F2270D /* BNCCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = E2B947491D15D73900F2270D /* BNCCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79C717E284A869D0061AB8B /* BNCNativecompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C717D284A869D0061AB8B /* BNCNativecompute.swift */; };
 		F185BAAA1F3D30D70056300C /* BNCSpotlightService.h in Headers */ = {isa = PBXBuildFile; fileRef = F185BAA81F3D30D70056300C /* BNCSpotlightService.h */; };
 		F185BAAB1F3D30D70056300C /* BNCSpotlightService.m in Sources */ = {isa = PBXBuildFile; fileRef = F185BAA91F3D30D70056300C /* BNCSpotlightService.m */; };
 		F1CF14111F4CC79F00BB2694 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F1D359201ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = F1D3591E1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h */; };
 		F1D359211ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3591F1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m */; };
+		F5084DD92894630B0063C8B6 /* NativeComputeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; };
+		F5190C03289865B8004425A5 /* NativeComputeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; };
+		F5190C04289865B8004425A5 /* NativeComputeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F5190C25289BA4DF004425A5 /* NativeComputeDebugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5190C24289BA4DF004425A5 /* NativeComputeDebugCell.swift */; };
+		F5190C26289BA4DF004425A5 /* NativeComputeDebugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5190C24289BA4DF004425A5 /* NativeComputeDebugCell.swift */; };
+		F5190C28289C6BDB004425A5 /* Branch-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E79C717C284A869C0061AB8B /* Branch-Bridging-Header.h */; };
+		F5694F2F289DD40100C17C95 /* NativeComputeDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */; };
+		F5694F30289DD40100C17C95 /* NativeComputeDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */; };
+		F5B999BF28A18FFB00063839 /* NativeComputeDebugButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B999BE28A18FFB00063839 /* NativeComputeDebugButtonCell.swift */; };
+		F5B999CA28A310E500063839 /* NativeComputeDebugButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B999BE28A18FFB00063839 /* NativeComputeDebugButtonCell.swift */; };
+		F5BFF18B288785EB003B9774 /* BNCNativecompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C717D284A869D0061AB8B /* BNCNativecompute.swift */; };
+		F5BFF18C288785EC003B9774 /* BNCNativecompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C717D284A869D0061AB8B /* BNCNativecompute.swift */; };
+		F5BFF18D288785F3003B9774 /* BNCNativecompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C717D284A869D0061AB8B /* BNCNativecompute.swift */; };
+		F5BFF18E288785F4003B9774 /* BNCNativecompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79C717D284A869D0061AB8B /* BNCNativecompute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +347,17 @@
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5952C7D285285DD0059411A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5190C04289865B8004425A5 /* NativeComputeSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -503,6 +530,8 @@
 		5F73FC7C23313F7A000EBD32 /* BNCJSONUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCJSONUtility.h; sourceTree = "<group>"; };
 		5F73FC7D23313F7A000EBD32 /* BNCJSONUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCJSONUtility.m; sourceTree = "<group>"; };
 		5F73FC8023314697000EBD32 /* BNCJSONUtilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCJSONUtilityTests.m; sourceTree = "<group>"; };
+		5F7A9D8B284A9D9C002BA2F7 /* Branch-TestBed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Branch-TestBed-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F7A9D8C284A9D9D002BA2F7 /* LoadSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSwift.swift; sourceTree = "<group>"; };
 		5F892EB62360EFE90023AEC1 /* BNCAppleSearchAds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCAppleSearchAds.m; sourceTree = "<group>"; };
 		5F892EB72360EFE90023AEC1 /* BNCAppleSearchAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCAppleSearchAds.h; sourceTree = "<group>"; };
 		5F892EBA2360F0290023AEC1 /* BNCAppleSearchAdsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCAppleSearchAdsTests.m; sourceTree = "<group>"; };
@@ -623,11 +652,17 @@
 		D258D2C41A794D64004A1C90 /* BranchActivityItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchActivityItemProvider.h; sourceTree = "<group>"; };
 		D258D2C51A794D64004A1C90 /* BranchActivityItemProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchActivityItemProvider.m; sourceTree = "<group>"; };
 		E2B947491D15D73900F2270D /* BNCCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCCallbacks.h; sourceTree = "<group>"; };
+		E79C717C284A869C0061AB8B /* Branch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Branch-Bridging-Header.h"; sourceTree = "<group>"; };
+		E79C717D284A869D0061AB8B /* BNCNativecompute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNCNativecompute.swift; sourceTree = "<group>"; };
 		F185BAA81F3D30D70056300C /* BNCSpotlightService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCSpotlightService.h; sourceTree = "<group>"; };
 		F185BAA91F3D30D70056300C /* BNCSpotlightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCSpotlightService.m; sourceTree = "<group>"; };
 		F1D3591E1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCDeepLinkViewControllerInstance.h; sourceTree = "<group>"; };
 		F1D3591F1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCDeepLinkViewControllerInstance.m; sourceTree = "<group>"; };
 		F1D4F9AC1F323F01002D13FF /* Branch-TestBed-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-TestBed-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NativeComputeSDK.xcframework; sourceTree = "<group>"; };
+		F5190C24289BA4DF004425A5 /* NativeComputeDebugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeComputeDebugCell.swift; sourceTree = "<group>"; };
+		F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeComputeDebugViewController.swift; sourceTree = "<group>"; };
+		F5B999BE28A18FFB00063839 /* NativeComputeDebugButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeComputeDebugButtonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -636,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F92B2362383644C00CA909B /* SystemConfiguration.framework in Frameworks */,
+				F5084DD92894630B0063C8B6 /* NativeComputeSDK.xcframework in Frameworks */,
 				5F437E38237DE1320052064B /* CoreTelephony.framework in Frameworks */,
 				5F205D05231864E800C776D1 /* WebKit.framework in Frameworks */,
 				466B584F1B17775900A69EDE /* AdSupport.framework in Frameworks */,
@@ -665,6 +701,7 @@
 				670016661940F51400A9E103 /* CoreGraphics.framework in Frameworks */,
 				67F270891BA9FCFF002546A7 /* CoreSpotlight.framework in Frameworks */,
 				670016641940F51400A9E103 /* Foundation.framework in Frameworks */,
+				F5190C03289865B8004425A5 /* NativeComputeSDK.xcframework in Frameworks */,
 				4DDC52621DCC08E700CFB737 /* iAd.framework in Frameworks */,
 				466B58811B1778DB00A69EDE /* libBranch.a in Frameworks */,
 				670016681940F51400A9E103 /* UIKit.framework in Frameworks */,
@@ -822,6 +859,7 @@
 		670016571940F51400A9E103 = {
 			isa = PBXGroup;
 			children = (
+				F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */,
 				6589EBA52674270100F2E28B /* Branch-TestBed-CI.xctestplan */,
 				033FC71025AC1E5800D8319E /* Branch-TestBed.xctestplan */,
 				4D93D8592098CC4400CFABA6 /* README.md */,
@@ -891,6 +929,8 @@
 				6700166A1940F51400A9E103 /* Supporting Files */,
 				670016781940F51400A9E103 /* ViewController.h */,
 				670016791940F51400A9E103 /* ViewController.m */,
+				5F7A9D8C284A9D9D002BA2F7 /* LoadSwift.swift */,
+				5F7A9D8B284A9D9C002BA2F7 /* Branch-TestBed-Bridging-Header.h */,
 			);
 			path = "Branch-TestBed";
 			sourceTree = "<group>";
@@ -909,6 +949,7 @@
 		670016BB1946309100A9E103 /* Branch-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				F5190C24289BA4DF004425A5 /* NativeComputeDebugCell.swift */,
 				C12320B8280E2091007771C0 /* BranchQRCode.m */,
 				C12320B6280E2060007771C0 /* BranchQRCode.h */,
 				C1614D5A285BD4AF0098946B /* BranchPluginSupport.h */,
@@ -1065,8 +1106,12 @@
 				3A78D575251EB5BF002A25CF /* BranchJsonConfig.m */,
 				5FDF914325818280009BE5A3 /* BNCPartnerParameters.h */,
 				5FDF914425818280009BE5A3 /* BNCPartnerParameters.m */,
+				E79C717D284A869D0061AB8B /* BNCNativecompute.swift */,
+				E79C717C284A869C0061AB8B /* Branch-Bridging-Header.h */,
 				C10C61AB28248E5A00761D7E /* BNCQRCodeCache.h */,
 				C10C61AC28248E5A00761D7E /* BNCQRCodeCache.m */,
+				F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */,
+				F5B999BE28A18FFB00063839 /* NativeComputeDebugButtonCell.swift */,
 			);
 			name = "Branch-SDK";
 			path = "../Branch-SDK";
@@ -1147,6 +1192,7 @@
 				4D59B51F2006979C00F89FD5 /* BNCApplication.h in Headers */,
 				5FB0AA6B231875B500A0F9EA /* BNCUserAgentCollector.h in Headers */,
 				5F08461123480008005B17E6 /* BNCTuneUtility.h in Headers */,
+				F5190C28289C6BDB004425A5 /* Branch-Bridging-Header.h in Headers */,
 				5F892EBF2361157E0023AEC1 /* NSError+Branch.h in Headers */,
 				5F3D6715232C589100454FF1 /* BranchLastAttributedTouchData.h in Headers */,
 				5F38020E24DCC2E800E6FAFD /* BranchContentPathProperties.h in Headers */,
@@ -1210,6 +1256,7 @@
 				6700165D1940F51400A9E103 /* Frameworks */,
 				6700165E1940F51400A9E103 /* Resources */,
 				032DAF2E2607E78A00891641 /* ShellScript */,
+				F5952C7D285285DD0059411A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1273,6 +1320,7 @@
 				TargetAttributes = {
 					466B58371B17773000A69EDE = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 1300;
 					};
 					5F8B7B3A21B5F5CD009CE0A6 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1281,6 +1329,7 @@
 					};
 					6700165F1940F51400A9E103 = {
 						DevelopmentTeam = R63EM248DP;
+						LastSwiftMigration = 1340;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1453,6 +1502,7 @@
 				5F892EB82360EFE90023AEC1 /* BNCAppleSearchAds.m in Sources */,
 				466B58591B17779C00A69EDE /* BNCPreferenceHelper.m in Sources */,
 				4D8999ED1DC108FF00F7EE0A /* BNCAvailability.m in Sources */,
+				F5694F2F289DD40100C17C95 /* NativeComputeDebugViewController.swift in Sources */,
 				5F5EC45C2374D95300AAAFC7 /* BNCAppleAdClient.m in Sources */,
 				5F38021724DCC2E800E6FAFD /* BranchOpenRequest.m in Sources */,
 				4D59B5222006979C00F89FD5 /* BNCKeyChain.m in Sources */,
@@ -1463,6 +1513,7 @@
 				5FB38C812521234F00E9A85A /* BNCAppGroupsData.m in Sources */,
 				5F38023624DCC2E800E6FAFD /* BNCServerInterface.m in Sources */,
 				5F38022B24DCC2E800E6FAFD /* BNCServerResponse.m in Sources */,
+				F5190C25289BA4DF004425A5 /* NativeComputeDebugCell.swift in Sources */,
 				5F38023424DCC2E800E6FAFD /* BranchCloseRequest.m in Sources */,
 				C1614D5D285BD4AF0098946B /* BranchPluginSupport.m in Sources */,
 				4D3FA94B1DFF31EB00E2B6A9 /* BNCConfig.m in Sources */,
@@ -1474,6 +1525,7 @@
 				5F32D7C4242AC339000DE539 /* BranchScene.m in Sources */,
 				5F38023524DCC2E800E6FAFD /* BranchCPIDRequest.m in Sources */,
 				5F38022324DCC2E800E6FAFD /* BranchSetIdentityRequest.m in Sources */,
+				F5B999BF28A18FFB00063839 /* NativeComputeDebugButtonCell.swift in Sources */,
 				4DCF4AFB1F4388F600AF9AAB /* BranchEvent.m in Sources */,
 				5FB0AA6C231875B500A0F9EA /* BNCUserAgentCollector.m in Sources */,
 				4D9607F51FBF9473008AB3C2 /* UIViewController+Branch.m in Sources */,
@@ -1495,6 +1547,7 @@
 				5F38023924DCC2E800E6FAFD /* BranchLogoutRequest.m in Sources */,
 				5F38022824DCC2E800E6FAFD /* BNCNetworkService.m in Sources */,
 				5F38022A24DCC2E800E6FAFD /* BranchContentDiscoveryManifest.m in Sources */,
+				E79C717E284A869D0061AB8B /* BNCNativecompute.swift in Sources */,
 				54391A161BA249FA0061CB0F /* BranchCSSearchableItemAttributeSet.m in Sources */,
 				5F73FC7F23313F7A000EBD32 /* BNCJSONUtility.m in Sources */,
 				4D59B5202006979C00F89FD5 /* BNCApplication.m in Sources */,
@@ -1509,6 +1562,7 @@
 				5F8B7B4721B5F5F0009CE0A6 /* Branch_setBranchKeyTests.m in Sources */,
 				5F3D671C233062FD00454FF1 /* BNCJsonLoader.m in Sources */,
 				5FC7327722DE9A44006E6FBC /* BNCServerInterfaceTests.m in Sources */,
+				F5BFF18D288785F3003B9774 /* BNCNativecompute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,11 +1572,16 @@
 			files = (
 				C10B7A07285BD7F100D26273 /* BranchPluginSupport.m in Sources */,
 				63E4C4881D25E16A00A45FD8 /* LogOutputViewController.m in Sources */,
+				F5BFF18B288785EB003B9774 /* BNCNativecompute.swift in Sources */,
 				6700167A1940F51400A9E103 /* ViewController.m in Sources */,
 				4DBEFFF61FB114F900F7C41B /* ArrayPickerView.m in Sources */,
 				4683F0761B20A73F00A432E7 /* AppDelegate.m in Sources */,
+				F5190C26289BA4DF004425A5 /* NativeComputeDebugCell.swift in Sources */,
 				670016701940F51400A9E103 /* main.m in Sources */,
+				F5B999CA28A310E500063839 /* NativeComputeDebugButtonCell.swift in Sources */,
+				F5694F30289DD40100C17C95 /* NativeComputeDebugViewController.swift in Sources */,
 				63E4C48B1D25E17B00A45FD8 /* NavigationController.m in Sources */,
+				5F7A9D8D284A9D9D002BA2F7 /* LoadSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1534,6 +1593,7 @@
 				4D1683B72098C902008819E3 /* BNCTestCase.m in Sources */,
 				4D1683B82098C902008819E3 /* BNCEncodingUtils.Test.m in Sources */,
 				4DB5EB4C209B9A6B00149DC9 /* BranchEvent.Test.swift in Sources */,
+				F5BFF18C288785EC003B9774 /* BNCNativecompute.swift in Sources */,
 				4D1683B12098C902008819E3 /* BranchLogoutRequestTests.m in Sources */,
 				5F909B5E23314CE900A774D2 /* BNCJSONUtilityTests.m in Sources */,
 				5F909B722332BEF600A774D2 /* BranchLastAttributedTouchDataTests.m in Sources */,
@@ -1593,6 +1653,7 @@
 			files = (
 				0372078825E9F81100F29C30 /* UITestCaseMisc.m in Sources */,
 				0328C5D9260C82F30007F741 /* UITestCaseSafari.m in Sources */,
+				F5BFF18E288785F4003B9774 /* BNCNativecompute.swift in Sources */,
 				033E097225F541D400F39CB3 /* UITestCaseTestBed.m in Sources */,
 				0399DD122599BF8A00CDB36E /* UITestSendV2Event.m in Sources */,
 				03B49EEB25F9F315000BF105 /* UITestCase0OpenNInstall.m in Sources */,
@@ -1647,6 +1708,7 @@
 		466B58491B17773000A69EDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -1656,36 +1718,53 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = /headers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /headers;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../Branch-SDK/Branch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		466B584A1B17773000A69EDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = /headers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /headers;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../Branch-SDK/Branch-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		5F8B7B4321B5F5CD009CE0A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1696,7 +1775,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Branch-SDK-Unhosted-Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.Branch-SDK-Unhosted-Tests";
@@ -1708,6 +1791,7 @@
 		5F8B7B4421B5F5CD009CE0A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1719,7 +1803,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Branch-SDK-Unhosted-Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.Branch-SDK-Unhosted-Tests";
@@ -1838,7 +1926,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1849,19 +1938,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Branch-TestBed/Branch-TestBed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = R63EM248DP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Branch-TestBed/Branch-TestBed-Prefix.pch";
 				INFOPLIST_FILE = "Branch-TestBed/Branch-TestBed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.Branch-TestBed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Branch-TestBed/Branch-TestBed-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = $PROJECT_DIR;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1872,19 +1970,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Branch-TestBed/Branch-TestBed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = R63EM248DP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Branch-TestBed/Branch-TestBed-Prefix.pch";
 				INFOPLIST_FILE = "Branch-TestBed/Branch-TestBed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.Branch-TestBed";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Branch-TestBed/Branch-TestBed-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = $PROJECT_DIR;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1894,6 +2000,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD84AC94725CA0D8C816E00F /* Pods-Branch-SDK-Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEVELOPMENT_TEAM = R63EM248DP;
@@ -1904,7 +2011,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Branch-SDK-Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1919,13 +2030,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70DDBBBEC7D3B170AA9F0395 /* Pods-Branch-SDK-Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEVELOPMENT_TEAM = R63EM248DP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Branch-SDK-Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1938,6 +2054,7 @@
 		F1D4F9B31F323F01002D13FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1947,7 +2064,11 @@
 				HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public\"";
 				INFOPLIST_FILE = "Branch-TestBed-UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1958,6 +2079,7 @@
 		F1D4F9B41F323F01002D13FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1968,7 +2090,11 @@
 				HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public\"";
 				INFOPLIST_FILE = "Branch-TestBed-UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.branch.sdk.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

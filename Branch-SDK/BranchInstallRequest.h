@@ -9,5 +9,4 @@
 #import "BranchOpenRequest.h"
 
 @interface BranchInstallRequest : BranchOpenRequest
-- (NSString *)getActionName;
 @end

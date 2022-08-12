@@ -112,6 +112,14 @@ static NSString *type = @"some type";
     } else {
         [self.disableTrackingButton setTitle:@"Disable Tracking" forState:UIControlStateNormal];
     }
+    
+    // register callback for NativeCompute debug screen 
+    Branch *branch = [Branch getInstance];
+    branch.nativeComputeDebugCallback = ^(UIViewController * _Nullable viewController, NSError * _Nullable error) {
+        [self presentViewController:viewController animated:YES completion:^{
+            
+        }];
+    };
 
 }
 

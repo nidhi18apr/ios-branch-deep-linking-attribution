@@ -159,3 +159,8 @@ NSString * const BRANCH_CRASHLYTICS_LOW_MEMORY_KEY = @"io.branch.device.lowmemor
 NSString * const BRANCH_REQUEST_KEY_EXTERNAL_INTENT_URI = @"external_intent_uri";
 
 NSString * const BRANCH_URL_QUERY_PARAM_GBRAID = @"gbraid";
+
+NSString * const BRANCH_NATIVE_CAPPING_DECISION = @"native_compute.capping_decision";
+NSString * const BRANCH_NATIVE_COMPUTE = @"native_compute";
+NSString * const BRANCH_NATIVE_VERIFICATION_MODE = @"native_compute.verification_mode";
+

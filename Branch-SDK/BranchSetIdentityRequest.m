@@ -52,8 +52,9 @@
     }
     
     BNCPreferenceHelper *preferenceHelper = [BNCPreferenceHelper sharedInstance];
-    if (response.data[BRANCH_RESPONSE_KEY_RANDOMIZED_BUNDLE_TOKEN])
+    if (response.data[BRANCH_RESPONSE_KEY_RANDOMIZED_BUNDLE_TOKEN]) {
         preferenceHelper.randomizedBundleToken = BNCStringFromWireFormat(response.data[BRANCH_RESPONSE_KEY_RANDOMIZED_BUNDLE_TOKEN]);
+    }
     if (response.data[BRANCH_RESPONSE_KEY_USER_URL]) {
         preferenceHelper.userUrl = response.data[BRANCH_RESPONSE_KEY_USER_URL];
     }
