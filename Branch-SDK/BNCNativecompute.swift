@@ -2,9 +2,6 @@
 //  BNCNativecompute.swift
 //  Branch-TestBed
 //
-//  Created by Usman Shafique on 6/2/22.
-//  Copyright © 2022 Branch, Inc. All rights reserved.
-//
 
 import Foundation
 import NativeComputeSDK
@@ -30,8 +27,8 @@ import NativeComputeSDK
       - Returns: NativeCompute instance
      */
     @objc public func createNativeCompute(branchKey: String) -> NativeCompute {
-        let whiteListSet = Set<String>()
-        return SharedNativeCompute().getInstance(domainWhiteList: whiteListSet, mode: Mode.production, branchKey: branchKey)
+        let allowedUrlSet = Set<String>()
+        return SharedNativeCompute().getInstance(domainWhiteList: allowedUrlSet, mode: Mode.production, branchKey: branchKey)
     }
     
     /**
@@ -141,7 +138,7 @@ import NativeComputeSDK
     
     /**
      
-        Returns a randomly generated hash
+     - Returns: a randomly generated hash
      */
     @objc public func getDebugHash() -> String {
         var debugHash = ""
@@ -149,6 +146,10 @@ import NativeComputeSDK
         nativeGroup.enter()
         DispatchQueue.main.sync {
             self.native.getDebugHash { hash, err in
+                guard err == nil else {
+                    nativeGroup.leave()
+                    return
+                }
                 debugHash = hash ?? ""
                 nativeGroup.leave()
             }

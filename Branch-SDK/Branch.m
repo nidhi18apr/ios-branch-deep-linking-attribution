@@ -2141,6 +2141,10 @@ static inline void BNCPerformBlockOnMainThreadSync(dispatch_block_t block) {
 }
 
 - (void)initUserSessionAndCallCallback:(BOOL)callCallback sceneIdentifier:(NSString *)sceneIdentifier {
+    // Code block calls NativeCompute's syncSchema which is a call that needs to occur in the
+    // main thread and needs to fully complete before subsequent code execution. Since the call
+    // contains a Kotlin suspendable call, the dispatch_group is passed to the method to handle
+    // leaving of the group once call completes successfully or not
     dispatch_async(self.isolationQueue, ^(){
         dispatch_group_t group = dispatch_group_create();
         dispatch_group_enter(group);
