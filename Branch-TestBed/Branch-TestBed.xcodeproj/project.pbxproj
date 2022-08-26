@@ -285,6 +285,14 @@
 		F1CF14111F4CC79F00BB2694 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F270881BA9FCFF002546A7 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F1D359201ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = F1D3591E1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h */; };
 		F1D359211ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3591F1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m */; };
+		F501239A28B8FB8B00EB7ABF /* NativeComputeDebugCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F501239828B8FB8B00EB7ABF /* NativeComputeDebugCell.h */; };
+		F501239B28B8FB8B00EB7ABF /* NativeComputeDebugCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F501239928B8FB8B00EB7ABF /* NativeComputeDebugCell.m */; };
+		F501239E28B901AB00EB7ABF /* NativeComputeDebugButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F501239C28B901AB00EB7ABF /* NativeComputeDebugButtonCell.h */; };
+		F501239F28B901AB00EB7ABF /* NativeComputeDebugButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F501239D28B901AB00EB7ABF /* NativeComputeDebugButtonCell.m */; };
+		F50123A228B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F50123A028B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.h */; };
+		F50123A328B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50123A128B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.m */; };
+		F50123A628B9334000EB7ABF /* BNCNativeCompute.h in Headers */ = {isa = PBXBuildFile; fileRef = F50123A428B9334000EB7ABF /* BNCNativeCompute.h */; };
+		F50123A728B9334000EB7ABF /* BNCNativeCompute.m in Sources */ = {isa = PBXBuildFile; fileRef = F50123A528B9334000EB7ABF /* BNCNativeCompute.m */; };
 		F5084DD92894630B0063C8B6 /* NativeComputeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; };
 		F5190C03289865B8004425A5 /* NativeComputeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; };
 		F5190C04289865B8004425A5 /* NativeComputeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -659,6 +667,14 @@
 		F1D3591E1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCDeepLinkViewControllerInstance.h; sourceTree = "<group>"; };
 		F1D3591F1ED4DCC500A93FD5 /* BNCDeepLinkViewControllerInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNCDeepLinkViewControllerInstance.m; sourceTree = "<group>"; };
 		F1D4F9AC1F323F01002D13FF /* Branch-TestBed-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Branch-TestBed-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F501239828B8FB8B00EB7ABF /* NativeComputeDebugCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeComputeDebugCell.h; sourceTree = "<group>"; };
+		F501239928B8FB8B00EB7ABF /* NativeComputeDebugCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeComputeDebugCell.m; sourceTree = "<group>"; };
+		F501239C28B901AB00EB7ABF /* NativeComputeDebugButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeComputeDebugButtonCell.h; sourceTree = "<group>"; };
+		F501239D28B901AB00EB7ABF /* NativeComputeDebugButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeComputeDebugButtonCell.m; sourceTree = "<group>"; };
+		F50123A028B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeComputeDebugViewControllerTableViewController.h; sourceTree = "<group>"; };
+		F50123A128B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeComputeDebugViewControllerTableViewController.m; sourceTree = "<group>"; };
+		F50123A428B9334000EB7ABF /* BNCNativeCompute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNCNativeCompute.h; sourceTree = "<group>"; };
+		F50123A528B9334000EB7ABF /* BNCNativeCompute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNCNativeCompute.m; sourceTree = "<group>"; };
 		F5084DD82894630B0063C8B6 /* NativeComputeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NativeComputeSDK.xcframework; sourceTree = "<group>"; };
 		F5190C24289BA4DF004425A5 /* NativeComputeDebugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeComputeDebugCell.swift; sourceTree = "<group>"; };
 		F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeComputeDebugViewController.swift; sourceTree = "<group>"; };
@@ -1112,6 +1128,14 @@
 				C10C61AC28248E5A00761D7E /* BNCQRCodeCache.m */,
 				F5694F2E289DD40100C17C95 /* NativeComputeDebugViewController.swift */,
 				F5B999BE28A18FFB00063839 /* NativeComputeDebugButtonCell.swift */,
+				F50123A428B9334000EB7ABF /* BNCNativeCompute.h */,
+				F50123A528B9334000EB7ABF /* BNCNativeCompute.m */,
+				F501239828B8FB8B00EB7ABF /* NativeComputeDebugCell.h */,
+				F501239928B8FB8B00EB7ABF /* NativeComputeDebugCell.m */,
+				F501239C28B901AB00EB7ABF /* NativeComputeDebugButtonCell.h */,
+				F501239D28B901AB00EB7ABF /* NativeComputeDebugButtonCell.m */,
+				F50123A028B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.h */,
+				F50123A128B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.m */,
 			);
 			name = "Branch-SDK";
 			path = "../Branch-SDK";
@@ -1137,6 +1161,8 @@
 				4D955CCC2035021400FB8008 /* BNCURLFilter.h in Headers */,
 				5F38023824DCC2E800E6FAFD /* BranchContentDiscoverer.h in Headers */,
 				5F38023324DCC2E800E6FAFD /* BranchContentDiscoveryManifest.h in Headers */,
+				F50123A628B9334000EB7ABF /* BNCNativeCompute.h in Headers */,
+				F50123A228B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.h in Headers */,
 				5F38023724DCC2E800E6FAFD /* BNCServerRequest.h in Headers */,
 				E2B9474A1D15D75000F2270D /* BNCCallbacks.h in Headers */,
 				4DCAC8011F426F7C00405D1D /* BNCCommerceEvent.h in Headers */,
@@ -1161,6 +1187,7 @@
 				5F38022424DCC2E800E6FAFD /* BranchShortUrlRequest.h in Headers */,
 				5F22AFC1240600BE00837CF5 /* BNCCallbackMap.m in Headers */,
 				4DCF4B031F438A8700AF9AAB /* BranchEvent.h in Headers */,
+				F501239A28B8FB8B00EB7ABF /* NativeComputeDebugCell.h in Headers */,
 				5F8F3E62232AD7F3002D0418 /* BranchCrossPlatformID.h in Headers */,
 				5F38022224DCC2E800E6FAFD /* BranchRegisterViewRequest.h in Headers */,
 				5F38022024DCC2E800E6FAFD /* BranchLogoutRequest.h in Headers */,
@@ -1195,6 +1222,7 @@
 				F5190C28289C6BDB004425A5 /* Branch-Bridging-Header.h in Headers */,
 				5F892EBF2361157E0023AEC1 /* NSError+Branch.h in Headers */,
 				5F3D6715232C589100454FF1 /* BranchLastAttributedTouchData.h in Headers */,
+				F501239E28B901AB00EB7ABF /* NativeComputeDebugButtonCell.h in Headers */,
 				5F38020E24DCC2E800E6FAFD /* BranchContentPathProperties.h in Headers */,
 				5F92B23F238486E200CA909B /* BNCNetworkInterface.h in Headers */,
 				4DCAC8301F426F7C00405D1D /* NSMutableDictionary+Branch.h in Headers */,
@@ -1485,8 +1513,10 @@
 				466D5A121B5991E3009DB845 /* BNCContentDiscoveryManager.m in Sources */,
 				466B58551B17779C00A69EDE /* Branch.m in Sources */,
 				5F437E3E237E03C00052064B /* BNCDeviceSystem.m in Sources */,
+				F501239B28B8FB8B00EB7ABF /* NativeComputeDebugCell.m in Sources */,
 				5F38023B24DCC2E800E6FAFD /* BranchContentDiscoverer.m in Sources */,
 				5F4101F626851DC7003699AD /* BNCPasteboard.m in Sources */,
+				F50123A328B90D4400EB7ABF /* NativeComputeDebugViewControllerTableViewController.m in Sources */,
 				4DBC88651F3A55B700E119BF /* NSString+Branch.m in Sources */,
 				54FF1F8E1BD1D4AE0004CE2E /* BranchUniversalObject.m in Sources */,
 				4DA577181E67B1D600A43BDD /* BNCLog.m in Sources */,
@@ -1510,6 +1540,7 @@
 				466B585F1B17779C00A69EDE /* BNCSystemObserver.m in Sources */,
 				4DB567341E79F46000A8A324 /* BranchShareLink.m in Sources */,
 				C10C61AE28248E5A00761D7E /* BNCQRCodeCache.m in Sources */,
+				F50123A728B9334000EB7ABF /* BNCNativeCompute.m in Sources */,
 				5FB38C812521234F00E9A85A /* BNCAppGroupsData.m in Sources */,
 				5F38023624DCC2E800E6FAFD /* BNCServerInterface.m in Sources */,
 				5F38022B24DCC2E800E6FAFD /* BNCServerResponse.m in Sources */,
@@ -1521,6 +1552,7 @@
 				F185BAAB1F3D30D70056300C /* BNCSpotlightService.m in Sources */,
 				4665AF261B28B9BB00184037 /* BranchConstants.m in Sources */,
 				5F38023A24DCC2E800E6FAFD /* BranchShortUrlRequest.m in Sources */,
+				F501239F28B901AB00EB7ABF /* NativeComputeDebugButtonCell.m in Sources */,
 				5F38021B24DCC2E800E6FAFD /* BranchContentPathProperties.m in Sources */,
 				5F32D7C4242AC339000DE539 /* BranchScene.m in Sources */,
 				5F38023524DCC2E800E6FAFD /* BranchCPIDRequest.m in Sources */,
