@@ -61,10 +61,6 @@
     if (response.data[BRANCH_RESPONSE_KEY_SESSION_ID]) {
         preferenceHelper.sessionID = response.data[BRANCH_RESPONSE_KEY_SESSION_ID];
     }
-  
-    if (response.data[BRANCH_RESPONSE_KEY_INSTALL_PARAMS]) {
-        preferenceHelper.installParams = response.data[BRANCH_RESPONSE_KEY_INSTALL_PARAMS];
-    }
     
     if (self.callback && self.shouldCallCallback) {
         NSString *storedParams = preferenceHelper.installParams;
