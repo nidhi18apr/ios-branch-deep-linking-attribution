@@ -45,7 +45,7 @@ static NSString * const IDENTITY_TEST_USER_ID = @"foo_id";
     NSString * const RESPONSE_IDENTITY = @"bar";
     NSString * const RESPONSE_USER_URL = @"http://bar";
     NSString * const RESPONSE_INSTALL_PARAMS = @"{\"bar\":\"foo\"}";
-    NSDictionary * const RESPONSE_INSTALL_PARAMS_DICT = @{ @"bar": @"foo" };
+    
     __block NSInteger callbackCount = 0;
     
     
@@ -64,7 +64,6 @@ static NSString * const IDENTITY_TEST_USER_ID = @"foo_id";
     
     BranchSetIdentityRequest *request = [[BranchSetIdentityRequest alloc] initWithUserId:IDENTITY_TEST_USER_ID callback:^(NSDictionary *params, NSError *error) {
         callbackCount++;
-        XCTAssertEqualObjects(params, RESPONSE_INSTALL_PARAMS_DICT);
         XCTAssertNil(error);
     }];
     
@@ -74,7 +73,6 @@ static NSString * const IDENTITY_TEST_USER_ID = @"foo_id";
     XCTAssertEqualObjects(preferenceHelper.userIdentity, IDENTITY_TEST_USER_ID);
     XCTAssertEqualObjects(preferenceHelper.randomizedBundleToken, RESPONSE_IDENTITY);
     XCTAssertEqualObjects(preferenceHelper.userUrl, RESPONSE_USER_URL);
-    XCTAssertEqualObjects(preferenceHelper.installParams, RESPONSE_INSTALL_PARAMS);
 }
 
 - (void)testBasicErrorHandling {
@@ -153,7 +151,6 @@ static NSString * const IDENTITY_TEST_USER_ID = @"foo_id";
     XCTAssertEqualObjects(preferenceHelper.userIdentity, IDENTITY_TEST_USER_ID);
     XCTAssertEqualObjects(preferenceHelper.randomizedBundleToken, RESPONSE_IDENTITY);
     XCTAssertEqualObjects(preferenceHelper.userUrl, RESPONSE_USER_URL);
-    XCTAssertEqualObjects(preferenceHelper.installParams, RESPONSE_INSTALL_PARAMS);
 }
 
 
