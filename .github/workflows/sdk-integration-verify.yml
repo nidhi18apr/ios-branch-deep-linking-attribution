@@ -15,10 +15,13 @@ jobs:
             pod update
             xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
       - name: Verify Carthage Integration
+        env:
+            BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         run: |
             echo "$PWD"
             CURR_DIR=$(PWD)
             cd  SDKIntegrationTestApps/iOSReleaseTest-Carthage/
-            echo "git \"file://${CURR_DIR}\"" >> cartfile
+            echo "git \"file://${CURR_DIR}\" \"$BRANCH_NAME\" " >> cartfile
             carthage update --use-xcframeworks
             xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
+       
