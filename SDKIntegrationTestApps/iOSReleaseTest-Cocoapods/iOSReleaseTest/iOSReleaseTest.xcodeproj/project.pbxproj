@@ -44,7 +44,6 @@
 		C119B02B27ADC8FB00E8C7BF /* iOSReleaseTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSReleaseTest.entitlements; sourceTree = "<group>"; };
 		CB25BCCA817F45C9E229676E /* Pods_iOSReleaseTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSReleaseTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D347EDD199CA7E6A4A677D5A /* Pods-iOSReleaseTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSReleaseTestTests.release.xcconfig"; path = "Target Support Files/Pods-iOSReleaseTestTests/Pods-iOSReleaseTestTests.release.xcconfig"; sourceTree = "<group>"; };
-		E763E99C29354DA40053F490 /* Branch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Branch.xcframework; path = "../../../../Documents/GitHub/ios-branch-deep-linking-attribution/carthage-files/Branch.xcframework"; sourceTree = "<group>"; };
 		E7939C0129749D3C00B90B82 /* iOSReleaseTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSReleaseTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7939C0329749D3C00B90B82 /* iOSReleaseTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSReleaseTestTests.swift; sourceTree = "<group>"; };
 		FD6F9153F98F7AA38E9A2DCF /* Pods_iOSReleaseTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSReleaseTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +118,6 @@
 		E763E99B29354DA30053F490 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E763E99C29354DA40053F490 /* Branch.xcframework */,
 				CB25BCCA817F45C9E229676E /* Pods_iOSReleaseTest.framework */,
 				FD6F9153F98F7AA38E9A2DCF /* Pods_iOSReleaseTestTests.framework */,
 			);
