@@ -16,4 +16,4 @@ jobs:
             cp SampleApps/Podfile SampleApps/CocoaPods/iOSReleaseTest/
             cd SampleApps/CocoaPods/iOSReleaseTest/
             pod update
-            xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.0' | xcpretty && exit ${PIPESTATUS[0]}
+            xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
