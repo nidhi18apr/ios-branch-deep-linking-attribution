@@ -8,5 +8,12 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      - name: Check current path
-        run: echo "$PWD"
+      - name: Install cocoapods
+        run: |
+            echo "$PWD"
+            mkdir -p ./SampleApps/CocoaPods
+            cp -R ./SampleApps/SDKIntegrationTestApp/iOSReleaseTest ./SampleApps/CocoaPods/
+            cp SampleApps/Podfile SampleApps/CocoaPods/iOSReleaseTest/
+            cd SampleApps/CocoaPods/iOSReleaseTest/
+            pod update
+            xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.0' | xcpretty && exit ${PIPESTATUS[0]}
