@@ -30,6 +30,7 @@ final class iOSReleaseTestTests: XCTestCase {
         let x = Branch.trackingDisabled()
         assert( x == true)
         Branch.setTrackingDisabled(false)
+        print("Test completed.")
     }
 
     func testPerformanceExample() throws {
