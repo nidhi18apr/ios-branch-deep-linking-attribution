@@ -16,6 +16,7 @@ jobs:
               repository: BranchMetrics/ios-branch-sdk-spm
               ref: GHA-experimental
               path: ios-spm-repo
+              repo-token: ${{secrets.GITHUB_TOKEN}}
       - name: Check repos
         run: |
             ls -la
