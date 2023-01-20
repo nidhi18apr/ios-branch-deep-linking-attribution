@@ -8,10 +8,25 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+              path: ios-main-repo
+      - name: Check out code spm repo
+        uses: actions/checkout@v3
+        with:
+              repository: BranchMetrics/ios-branch-sdk-spm
+              ref: GHA-experimental
+              path: ios-spm-repo
+      - name: Check repos
+        run: |
+            ls -la
+            echo "$PWD"
+            cd  ios-main-repo/
+            ls -la
+            cd ../ios-spm-repo
       - name: Verify CocoaPods Integration
         run: |
             echo "$PWD"
-            cd  SDKIntegrationTestApps/iOSReleaseTest-Cocoapods/
+            cd  ios-main-repo/SDKIntegrationTestApps/iOSReleaseTest-Cocoapods/
             pod update
             xcodebuild test -scheme iOSReleaseTest -workspace iOSReleaseTest.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
       - name: Verify Carthage Integration
@@ -20,7 +35,7 @@ jobs:
         run: |
             echo "$PWD"
             CURR_DIR=$(PWD)
-            cd  SDKIntegrationTestApps/iOSReleaseTest-Carthage/
+            cd  ios-main-repo/SDKIntegrationTestApps/iOSReleaseTest-Carthage/
             echo "git \"file://${CURR_DIR}\" \"$BRANCH_NAME\" " >> cartfile
             carthage update --use-xcframeworks
             xcodebuild test -scheme iOSReleaseTest -project iOSReleaseTest.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
