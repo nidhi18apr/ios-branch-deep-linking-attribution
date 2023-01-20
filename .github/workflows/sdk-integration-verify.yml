@@ -1,7 +1,8 @@
 name: SDK Integration Tests
 
 on: [push]
-
+permissions:
+  contents: write
 jobs:
   verify:
     runs-on: macos-latest
