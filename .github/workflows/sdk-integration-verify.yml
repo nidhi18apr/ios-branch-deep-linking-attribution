@@ -10,30 +10,26 @@ jobs:
         uses: actions/checkout@v3
         with:
               path: ios-main-repo
-      - name: Check out code spm repo
-        uses: actions/checkout@v3
-        with:
-              repository: BranchMetrics/ios-branch-sdk-spm
-              ref: GHA-experimental
-              path: ios-spm-repo
-              repo-token: ${{secrets.GITHUB_TOKEN}}
       - name: Check repos
         run: |
             ls -la
             echo "$PWD"
             cd  ios-main-repo/
             ls -la
-            cd ../ios-spm-repo
-            ls -la
             cd ..
+            mkdir ios-spm-repo
+            chmod -R 755 ios-spm-repo
             echo "Overwriting code to local spm repo"
             sudo cp -R ios-main-repo/* ios-spm-repo/*
             echo "Adding files to git repo"
             cd ios-spm-repo
-            git remote set-url origin https://${{secrets.GITHUB_TOKEN}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
+            git init
+            git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
+            git fetch
+            git checkout GHA-experimental
             git add .
             echo "Commitng the repo"
-            git commit -m "Test Commit from GHA"
+            git commit -m"Test Commit from GHA"
             echo "Pushing to remote"
             git push origin GHA-experimental
             echo "Done"
