@@ -23,6 +23,18 @@ jobs:
             cd  ios-main-repo/
             ls -la
             cd ../ios-spm-repo
+            ls -la
+            cd ..
+            echo "Overwriting code to local spm repo"
+            sudo cp -R ios-main-repo/* ios-spm-repo/*
+            echo "Adding files to git repo"
+            cd ios-spm-repo
+            git add .
+            echo "Commitng the repo"
+            git commit -m "Test Commit from GHA"
+            echo "Pushing to remote"
+            git push origin GHA-experimental
+            echo "Done"
       - name: Verify CocoaPods Integration
         run: |
             echo "$PWD"
