@@ -24,12 +24,12 @@ jobs:
             git fetch
             git checkout GHA-experimental
             echo "Overwriting code to local spm repo"
-            sudo cp -R ios-main-repo/* ios-spm-repo/
+            sudo cp -R ios-main-repo/* ./
             git add .
             echo "Commitng the repo"
             git commit -m"Test Commit from GHA"
             echo "Pushing to remote"
-            git push origin GHA-experimental
+            git push
             echo "Done"
       - name: Verify CocoaPods Integration
         run: |
