@@ -17,14 +17,14 @@ jobs:
             mkdir ios-spm-repo
             ls -la
             chmod -R 755 ios-spm-repo
-            echo "Overwriting code to local spm repo"
-            sudo cp -R ios-main-repo/* ios-spm-repo/
             echo "Adding files to git repo"
             cd ios-spm-repo
             git init
             git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
             git fetch
             git checkout GHA-experimental
+            echo "Overwriting code to local spm repo"
+            sudo cp -R ios-main-repo/* ios-spm-repo/
             git add .
             echo "Commitng the repo"
             git commit -m"Test Commit from GHA"
