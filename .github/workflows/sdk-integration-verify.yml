@@ -14,10 +14,8 @@ jobs:
         run: |
             ls -la
             echo "$PWD"
-            cd  ios-main-repo/
-            ls -la
-            cd ..
             mkdir ios-spm-repo
+            ls -la 
             chmod -R 755 ios-spm-repo
             echo "Overwriting code to local spm repo"
             sudo cp -R ios-main-repo/* ios-spm-repo/*
