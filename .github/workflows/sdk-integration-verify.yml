@@ -15,10 +15,10 @@ jobs:
             ls -la
             echo "$PWD"
             mkdir ios-spm-repo
-            ls -la 
+            ls -la
             chmod -R 755 ios-spm-repo
             echo "Overwriting code to local spm repo"
-            sudo cp -R ios-main-repo/* ios-spm-repo/*
+            sudo cp -R ios-main-repo/* ios-spm-repo/
             echo "Adding files to git repo"
             cd ios-spm-repo
             git init
