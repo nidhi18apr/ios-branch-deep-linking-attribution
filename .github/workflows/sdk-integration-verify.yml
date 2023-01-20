@@ -30,6 +30,7 @@ jobs:
             sudo cp -R ios-main-repo/* ios-spm-repo/*
             echo "Adding files to git repo"
             cd ios-spm-repo
+            git remote set-url origin https://${{secrets.GITHUB_TOKEN}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
             git add .
             echo "Commitng the repo"
             git commit -m "Test Commit from GHA"
