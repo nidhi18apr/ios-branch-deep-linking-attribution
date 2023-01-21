@@ -21,7 +21,7 @@ jobs:
             echo "Adding files to git repo"
             cd ios-spm-repo
             git init
-            git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
+            git remote add origin https://$GITHUB_ACTOR:${{secrets.BRANCHLET_ACCESS_TOKEN_PUBLIC}}@github.com/BranchMetrics/ios-branch-sdk-spm.git
             git fetch
             git checkout GHA-experimental
             echo "Overwriting code to local spm repo"
