@@ -4,21 +4,6 @@ name: Build & Release (manual)
 # $ gh workflow run release.yml
 on: 
   workflow_dispatch:
-    inputs:
-      workflow_02:
-        description: 'ًWorkflow 2 which will be triggered'
-        required: true
-        default: 'workflow_02'
-
-      workflow2_github_account:
-        description: 'GitHub Account Owner'
-        required: true
-        default: ':userName'
-
-      workflow2_repo_github:
-        description: 'repo-name'
-        required: true
-        default: ':repoName' 
 
 # Builds four frameworks in parallel, then commits checksums
 # releases with the frameworks and checksums attached to the release.
@@ -30,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Run Workflow on SPM Repo
         run: |
-          curl -X POST https://api.github.com/repos/:nidhi18apr/:ios-branch-sdk-spm/dispatches \
+          curl -X POST https://api.github.com/repos/nidhi18apr/ios-branch-sdk-spm/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.TEST_ACTION_SECRET }} \
           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
