@@ -2,8 +2,7 @@ name: Build & Release (manual)
 
 # Manually triggered
 # $ gh workflow run release.yml
-on: 
-  workflow_dispatch:
+on: workflow_dispatch
 
 # Builds four frameworks in parallel, then commits checksums
 # releases with the frameworks and checksums attached to the release.
