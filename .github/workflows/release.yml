@@ -130,8 +130,8 @@ jobs:
       - name: Commit checksums
         id: commit-checksums
         run: |
-          git config user.name "Branch SDK Team"
-          git config user.email branch-sdks@branch.io
+          git config user.name "nidhi18apr"
+          git config user.email nidhi18apr@gmail.io
           git commit carthage-files/checksum carthage-files/checksum_noidfa carthage-files/checksum_static carthage-files/checksum_static_noidfa -m'Updated checksums'
           echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       # TODO: Version bump along the way, probably here.
@@ -235,15 +235,3 @@ jobs:
               assetName: 'checksum_static_noidfa',
               path: 'static-framework-noidfa/checksum_static_noidfa',
             });
-      - name: Report Release
-        uses: actions/github-script@v4
-        with:
-          script: |
-            console.log('Created release ${{ steps.get-version.outputs.version }}:');
-            console.log(` https://github.com/${context.repo.owner}/${context.repo.repo}/releases/${{ steps.get-version.outputs.version }}`);
-      # 4. Trigger import workflow in ios-spm repo.
-      - name: Export to ios-spm repository
-        uses: actions/github-script@v4
-        with:
-          script: |
-            console.log('TODO: This 👆');
