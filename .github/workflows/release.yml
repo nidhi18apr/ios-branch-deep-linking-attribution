@@ -64,7 +64,7 @@ jobs:
           name: release_framework
           path: |
             ./Branch.zip
-            ./checksum
+            ./checksum.txt
 
   build-noidfa:
     runs-on: macos-latest
@@ -81,7 +81,7 @@ jobs:
           name: framework-noidfa
           path: |
             ./Branch_noidfa.zip
-            ./checksum_noidfa
+            ./checksum_noidfa.txt
 
   build-static:
     runs-on: macos-latest
@@ -98,7 +98,7 @@ jobs:
           name: static-framework
           path: |
             ./Branch_static.zip
-            ./checksum_static
+            ./checksum_static.txt
 
   build-static-noidfa:
     runs-on: macos-latest
@@ -115,7 +115,7 @@ jobs:
           name: static-framework-noidfa
           path: |
             ./Branch_static_noidfa.zip
-            ./checksum_static_noidfa
+            ./checksum_static_noidfa.txt
 
   release:
     runs-on: macos-latest
@@ -241,26 +241,26 @@ jobs:
               context,
               releaseId,
               assetName: 'checksum_noidfa',
-              path: 'framework-noidfa/checksum_noidfa',
+              path: 'framework-noidfa/checksum_noidfa.txt',
             });
             await uploadAsset({
               github,
               context,
               releaseId,
               assetName: 'checksum_static',
-              path: 'static-framework/checksum_static',
+              path: 'static-framework/checksum_static.txt',
             });
             await uploadAsset({
               github,
               context,
               releaseId,
               assetName: 'checksum_static_noidfa',
-              path: 'static-framework-noidfa/checksum_static_noidfa',
+              path: 'static-framework-noidfa/checksum_static_noidfa.txt',
             });
             await uploadAsset({
               github,
               context,
               releaseId,
               assetName: 'checksum',
-              path: 'release_framework/checksum',
+              path: 'release_framework/checksum.txt',
             });
