@@ -147,6 +147,7 @@ jobs:
         uses: actions/download-artifact@v3
       - name: Relocate checksum artifacts
         run: |
+          ls -la
           #cp framework/checksum carthage-files
           #cp framework-noidfa/checksum_noidfa carthage-files
           #cp static-framework/checksum_static carthage-files
