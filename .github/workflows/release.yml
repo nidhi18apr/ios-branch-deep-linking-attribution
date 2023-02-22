@@ -34,8 +34,8 @@ jobs:
             fi
             git config user.name "nidhi18apr"
             git config user.email "nidhi18apr@gmail.com"
-            git add BranchSDK.xcodeproj/project.pbxproj BranchSDK/BNCConfig.m BranchSDK.podspec Branch-TestBed/Framework-Info.plist
-            git commit BranchSDK.xcodeproj/project.pbxproj BranchSDK/BNCConfig.m BranchSDK.podspec Branch-TestBed/Framework-Info.plist -m'Updated version'
+            git add BranchSDK.xcodeproj/project.pbxproj BranchSDK/BNCConfig.m BranchSDK.podspec Branch-TestBed/Framework-Info.plist ./scripts/version.sh
+            git commit BranchSDK.xcodeproj/project.pbxproj BranchSDK/BNCConfig.m BranchSDK.podspec Branch-TestBed/Framework-Info.plist ./scripts/version.sh -m'Updated version'
             echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
             git push
 
