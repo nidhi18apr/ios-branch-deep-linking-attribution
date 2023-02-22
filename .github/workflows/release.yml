@@ -67,8 +67,8 @@ jobs:
         with:
           name: framework
           path: |
-            carthage-files/build/Branch.zip
-            carthage-files/build/checksum
+            build/Branch.zip
+            build/checksum
 
   build-noidfa:
     runs-on: macos-latest
@@ -89,8 +89,8 @@ jobs:
         with:
           name: framework-noidfa
           path: |
-            carthage-files/build/Branch_noidfa.zip
-            carthage-files/build/checksum_noidfa
+            build/Branch_noidfa.zip
+            build/checksum_noidfa
 
   build-static:
     runs-on: macos-latest
