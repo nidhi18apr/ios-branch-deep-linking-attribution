@@ -43,8 +43,8 @@ jobs:
     runs-on: macos-latest
     needs: [version-bump]
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+     # - name: Check out code
+     #   uses: actions/checkout@v3
       - name: Run static analysis
         run: |
             echo ""
@@ -63,8 +63,8 @@ jobs:
         with:
           name: release_framework
           path: |
-            Branch.zip
-            checksum
+            ./Branch.zip
+            ./checksum
 
   build-noidfa:
     runs-on: macos-latest
@@ -80,8 +80,8 @@ jobs:
         with:
           name: framework-noidfa
           path: |
-            Branch_noidfa.zip
-            checksum_noidfa
+            ./Branch_noidfa.zip
+            ./checksum_noidfa
 
   build-static:
     runs-on: macos-latest
@@ -97,8 +97,8 @@ jobs:
         with:
           name: static-framework
           path: |
-            Branch_static.zip
-            checksum_static
+            ./Branch_static.zip
+            ./checksum_static
 
   build-static-noidfa:
     runs-on: macos-latest
@@ -114,8 +114,8 @@ jobs:
         with:
           name: static-framework-noidfa
           path: |
-            Branch_static_noidfa.zip
-            checksum_static_noidfa
+            ./Branch_static_noidfa.zip
+            ./checksum_static_noidfa
 
   release:
     runs-on: macos-latest
