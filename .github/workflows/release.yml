@@ -148,6 +148,8 @@ jobs:
       - name: Relocate checksum artifacts
         run: |
           ls -la
+          ls -la release_framework/*
+          ls -la framework-noidfa/*
           #cp framework/checksum carthage-files
           #cp framework-noidfa/checksum_noidfa carthage-files
           #cp static-framework/checksum_static carthage-files
@@ -237,13 +239,6 @@ jobs:
               github,
               context,
               releaseId,
-              assetName: 'checksum',
-              path: 'release_framework/checksum',
-            });
-            await uploadAsset({
-              github,
-              context,
-              releaseId,
               assetName: 'checksum_noidfa',
               path: 'framework-noidfa/checksum_noidfa',
             });
@@ -260,4 +255,11 @@ jobs:
               releaseId,
               assetName: 'checksum_static_noidfa',
               path: 'static-framework-noidfa/checksum_static_noidfa',
+            });
+            await uploadAsset({
+              github,
+              context,
+              releaseId,
+              assetName: 'checksum',
+              path: 'release_framework/checksum',
             });
