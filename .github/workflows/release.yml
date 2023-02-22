@@ -3,12 +3,52 @@ name: Build & Release (manual)
 # Manually triggered
 # $ gh workflow run release.yml
 on: workflow_dispatch
-
-# Builds four frameworks in parallel, then commits checksums
-# releases with the frameworks and checksums attached to the release.
+    inputs:
+      version:
+        description: Select Release type - major, minor or patch(for version upgrade).
+        required: false
+        default: patch
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+        
 jobs:
+  version-bump:
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Update Version
+        run: |
+            if [[ ${{ inputs.version }} == "patch" ]]; then
+                ./scripts/version.sh -i
+            elif [[ ${{ inputs.version }} == "minor" ]]; then
+                ./scripts/version.sh -im
+            elif [[ ${{ inputs.version }} == "major" ]]; then
+                ./scripts/version.sh -iM
+            else
+                echo "Invalid option"
+            fi
+            git config user.name "nidhi18apr"
+            git config user.email "nidhi18apr@gmail.com"
+            git add carthage-files/BranchSDK.xcodeproj/project.pbxproj Branch-SDK/BNCConfig.m Branch.podspec Branch-TestBed/Framework-Info.plist
+            git commit carthage-files/BranchSDK.xcodeproj/project.pbxproj Branch-SDK/BNCConfig.m Branch.podspec Branch-TestBed/Framework-Info.plist -m'Updated version'
+            echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+            git push
+
+  static-analysis:
+    runs-on: macos-latest
+    needs: [version-bump]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Run static analysis
+        run: |
+            xcodebuild analyze -project BranchSDK.xcodeproj
   build:
     runs-on: macos-latest
+    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -30,6 +70,7 @@ jobs:
 
   build-noidfa:
     runs-on: macos-latest
+    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -51,6 +92,7 @@ jobs:
 
   build-static:
     runs-on: macos-latest
+    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -72,6 +114,7 @@ jobs:
 
   build-static-noidfa:
     runs-on: macos-latest
+    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -93,7 +136,7 @@ jobs:
 
   release:
     runs-on: macos-latest
-    needs: [build, build-static]
+    needs: [build, build-static, build-noidfa, build-static-noidfa]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
