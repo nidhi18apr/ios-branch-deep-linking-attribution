@@ -30,7 +30,7 @@ Options:
 USAGE
 }
 
-version=2.0.11
+version=2.0.12
 prev_version="$version"
 
 if (( $# == 0 )); then
