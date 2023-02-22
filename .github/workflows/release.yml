@@ -2,7 +2,8 @@ name: Build & Release (manual)
 
 # Manually triggered
 # $ gh workflow run release.yml
-on: workflow_dispatch
+on:
+  workflow_dispatch
     inputs:
       version:
         description: Select Release type - major, minor or patch(for version upgrade).
@@ -16,6 +17,7 @@ on: workflow_dispatch
         
 jobs:
   version-bump:
+    runs-on: macos-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v3
