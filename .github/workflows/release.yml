@@ -60,7 +60,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: framework
+          name: release_framework
           path: |
             Branch.zip
             checksum
@@ -210,7 +210,7 @@ jobs:
               context,
               releaseId,
               assetName: 'Branch.zip',
-              path: 'framework/Branch.zip',
+              path: 'release_framework/Branch.zip',
             });
             await uploadAsset({
               github,
@@ -238,7 +238,7 @@ jobs:
               context,
               releaseId,
               assetName: 'checksum',
-              path: 'framework/checksum',
+              path: 'release_framework/checksum',
             });
             await uploadAsset({
               github,
