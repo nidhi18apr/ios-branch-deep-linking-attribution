@@ -57,7 +57,7 @@ jobs:
       - name: Build xcframework
         working-directory: carthage-files
         run: |
-          xcodebuild -scheme Branch-xcframework
+          xcodebuild -scheme xcframework
           cd build
           zip -rqy Branch.zip Branch.xcframework/
           echo '#checksum for Branch.zip on Github' > checksum
@@ -79,7 +79,7 @@ jobs:
       - name: Build xcframework
         working-directory: carthage-files
         run: |
-          xcodebuild -scheme Branch-xcframework-noidfa
+          xcodebuild -scheme xcframework-noidfa
           cd build
           zip -rqy Branch_noidfa.zip Branch.xcframework/
           echo '#checksum for Branch_noidfa.zip on Github' > checksum_noidfa
@@ -101,7 +101,7 @@ jobs:
       - name: Build static xcframework
         working-directory: carthage-files
         run: |
-          xcodebuild -scheme Branch-static-xcframework
+          xcodebuild -scheme static-xcframework
           cd build
           zip -rqy Branch_static.zip Branch.xcframework/
           echo '#checksum for Branch_static.zip on Github' > checksum_static
@@ -123,7 +123,7 @@ jobs:
       - name: Build static xcframework
         working-directory: carthage-files
         run: |
-          xcodebuild -scheme Branch-static-xcframework-noidfa
+          xcodebuild -scheme static-xcframework-noidfa
           cd build
           zip -rqy Branch_static_noidfa.zip Branch.xcframework/
           echo '#checksum for Branch_static_noidfa.zip on Github' > checksum_static_noidfa
