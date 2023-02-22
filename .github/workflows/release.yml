@@ -50,12 +50,11 @@ jobs:
             xcodebuild analyze -project BranchSDK.xcodeproj
   build:
     runs-on: macos-latest
-    needs: [static-analysis]
+    #needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Build xcframework
-        working-directory: carthage-files
         run: |
           xcodebuild -scheme xcframework
           cd build
