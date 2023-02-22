@@ -73,18 +73,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Build xcframework
         run: |
-          xcodebuild -scheme xcframework-noidfa
-          cd build
-          zip -rqy Branch_noidfa.zip Branch.xcframework/
-          echo '#checksum for Branch_noidfa.zip on Github' > checksum_noidfa
-          shasum Branch_noidfa.zip >> checksum_noidfa
+          ./scripts/prep_xcframework_noidfa.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: framework-noidfa
           path: |
-            build/Branch_noidfa.zip
-            build/checksum_noidfa
+            Branch_noidfa.zip
+            checksum_noidfa
 
   build-static:
     runs-on: macos-latest
@@ -94,18 +90,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Build static xcframework
         run: |
-          xcodebuild -scheme static-xcframework
-          cd build
-          zip -rqy Branch_static.zip Branch.xcframework/
-          echo '#checksum for Branch_static.zip on Github' > checksum_static
-          shasum Branch_static.zip >> checksum_static
+          ./scripts/prep_static_xcframework.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: static-framework
           path: |
-            build/Branch_static.zip
-            build/checksum_static
+            Branch_static.zip
+            checksum_static
 
   build-static-noidfa:
     runs-on: macos-latest
@@ -115,18 +107,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Build static xcframework
         run: |
-          xcodebuild -scheme static-xcframework-noidfa
-          cd build
-          zip -rqy Branch_static_noidfa.zip Branch.xcframework/
-          echo '#checksum for Branch_static_noidfa.zip on Github' > checksum_static_noidfa
-          shasum Branch_static_noidfa.zip >> checksum_static_noidfa
+          ./scripts/prep_static_xcframework_noidfa.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: static-framework-noidfa
           path: |
-            build/Branch_static_noidfa.zip
-            build/checksum_static_noidfa
+            Branch_static_noidfa.zip
+            checksum_static_noidfa
 
   release:
     runs-on: macos-latest
