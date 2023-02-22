@@ -147,22 +147,22 @@ jobs:
         uses: actions/download-artifact@v3
       - name: Relocate checksum artifacts
         run: |
-          cp framework/checksum carthage-files
-          cp framework-noidfa/checksum_noidfa carthage-files
-          cp static-framework/checksum_static carthage-files
-          cp static-framework-noidfa/checksum_static_noidfa carthage-files
+          #cp framework/checksum carthage-files
+          #cp framework-noidfa/checksum_noidfa carthage-files
+          #cp static-framework/checksum_static carthage-files
+          #cp static-framework-noidfa/checksum_static_noidfa carthage-files
       # The sha output from this step is the commit to be tagged.
-      - name: Commit checksums
-        id: commit-checksums
-        run: |
-          git config user.name "nidhi18apr"
-          git config user.email nidhi18apr@gmail.io
-          git commit carthage-files/checksum carthage-files/checksum_noidfa carthage-files/checksum_static carthage-files/checksum_static_noidfa -m'Updated checksums'
-          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      #- name: Commit checksums
+        #id: commit-checksums
+        #run: |
+          #git config user.name "nidhi18apr"
+          #git config user.email nidhi18apr@gmail.io
+          #git commit carthage-files/checksum carthage-files/checksum_noidfa carthage-files/checksum_static carthage-files/checksum_static_noidfa -m'Updated checksums'
+          #echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       # TODO: Version bump along the way, probably here.
-      - name: Push changes
-        run: |
-          git push
+      #- name: Push changes
+        #run: |
+          #git push
       - name: Publish to CocoaPods
         run: |
           # TODO: Authenticate using repo secret
