@@ -120,7 +120,7 @@ jobs:
 
   release:
     runs-on: macos-latest
-    #needs: [build, build-static, build-noidfa, build-static-noidfa]
+    needs: [build, build-static, build-noidfa, build-static-noidfa]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
