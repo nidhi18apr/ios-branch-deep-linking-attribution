@@ -266,7 +266,7 @@ jobs:
               path: 'release_framework/checksum.txt',
             });
         - name: Trigger workflow from iOS SDK spm repo
-        run: |
-            curl -X POST https://api.github.com/repos/nidhi18apr/ios-branch-sdk-spm/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -u "nidhi18apr:${{ secrets.TEST_ACTION_SECRET}}" --data '{"event_type": "Trigger Workflow", "tag":"${{steps.get-version.outputs.version}}"}'
+          run: |
+              curl -X POST https://api.github.com/repos/nidhi18apr/ios-branch-sdk-spm/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -u "nidhi18apr:${{ secrets.TEST_ACTION_SECRET}}" --data '{"event_type": "Trigger Workflow", "tag":"${{steps.get-version.outputs.version}}"}'
     
   
