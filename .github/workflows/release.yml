@@ -120,7 +120,7 @@ jobs:
 
   release:
     runs-on: macos-latest
-    needs: [build, build-static, build-noidfa, build-static-noidfa]
+    #needs: [build, build-static, build-noidfa, build-static-noidfa]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -265,17 +265,8 @@ jobs:
               assetName: 'checksum',
               path: 'release_framework/checksum.txt',
             });
-    
-  trigger-workflow:
-    runs-on: macos-latest
-    #needs: [release]
-    steps:
-      - name: Get current version
-        id: get-version
-        run: |
-          bundle exec fastlane current_version
-          echo "Current version is $(cat fastlane/.version)."
-          echo "version=$(cat fastlane/.version)" >> $GITHUB_OUTPUT
-      - name: Trigger workflow from iOS SDK spm repo
+        - name: Trigger workflow from iOS SDK spm repo
         run: |
             curl -X POST https://api.github.com/repos/nidhi18apr/ios-branch-sdk-spm/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -u "nidhi18apr:${{ secrets.TEST_ACTION_SECRET}}" --data '{"event_type": "Trigger Workflow", "tag":"${{steps.get-version.outputs.version}}"}'
+    
+  
