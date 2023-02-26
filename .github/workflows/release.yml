@@ -16,9 +16,18 @@ on:
         - major
         
 jobs:
-
+  static-analysis:
+    runs-on: macos-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Run static analysis
+        run: |
+            xcodebuild analyze -project BranchSDK.xcodeproj
+            
   version-bump:
     runs-on: macos-latest
+    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -40,25 +49,15 @@ jobs:
             echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
             git push
 
-  static-analysis:
+  build-framework:
     runs-on: macos-latest
     needs: [version-bump]
-    steps:
-     # - name: Check out code
-     #   uses: actions/checkout@v3
-      - name: Run static analysis
-        run: |
-            echo ""
-            #xcodebuild analyze -project BranchSDK.xcodeproj
-  build:
-    runs-on: macos-latest
-    needs: [static-analysis]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Build xcframework
         run: |
-          ./scripts/prep_xcframework.sh
+            ./scripts/prep_xcframework.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -67,15 +66,15 @@ jobs:
             ./Branch.zip
             ./checksum.txt
 
-  build-noidfa:
+  build-noidfa-framework:
     runs-on: macos-latest
-    needs: [static-analysis]
+    needs: [version-bump]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Build xcframework
         run: |
-          ./scripts/prep_xcframework_noidfa.sh
+            ./scripts/prep_xcframework_noidfa.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -84,15 +83,15 @@ jobs:
             ./Branch_noidfa.zip
             ./checksum_noidfa.txt
 
-  build-static:
+  build-static-framework:
     runs-on: macos-latest
-    needs: [static-analysis]
+    needs: [version-bump]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Build static xcframework
         run: |
-          ./scripts/prep_static_xcframework.sh
+            ./scripts/prep_static_xcframework.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -101,15 +100,15 @@ jobs:
             ./Branch_static.zip
             ./checksum_static.txt
 
-  build-static-noidfa:
+  build-static-noidfa-framework:
     runs-on: macos-latest
-    needs: [static-analysis]
+    needs: [version-bump]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Build static xcframework
         run: |
-          ./scripts/prep_static_xcframework_noidfa.sh
+            ./scripts/prep_static_xcframework_noidfa.sh
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -120,7 +119,7 @@ jobs:
 
   release:
     runs-on: macos-latest
-    needs: [build, build-static, build-noidfa, build-static-noidfa]
+    needs: [build-framework, build-static-framework, build-noidfa-framework, build-static-noidfa-framework]
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -244,7 +243,7 @@ jobs:
               assetName: 'checksum',
               path: 'release_framework/checksum.txt',
             });
-      - name: Trigger workflow from iOS SDK spm repo
+      - name: Trigger workflow in iOS Branch SDK spm repo for updating code and creating release
         run: |
             curl -X POST https://api.github.com/repos/nidhi18apr/ios-branch-sdk-spm/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -u "nidhi18apr:${{ secrets.TEST_ACTION_SECRET}}" --data '{"event_type": "Trigger Workflow", "client_payload":
                    { "tag":"${{steps.get-version.outputs.version}}"}}'
