@@ -30,7 +30,7 @@ Options:
 USAGE
 }
 
-version=4.0.6
+version=4.0.7
 prev_version="$version"
 
 if (( $# == 0 )); then
